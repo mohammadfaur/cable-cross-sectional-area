@@ -1,33 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" class="dark-mode rtl">
 <head>
   <meta charset="UTF-8">
-  <title>Cable Selector</title>
+  <title>מחשבון כבלים</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h2>Cable Resistance & Reactance Finder</h2>
+    <div class="header-row">
+      <h2 id="app-title">מחשבון התנגדות והיגב כבלים</h2>
+      <div class="controls-row">
+        <div class="language-toggle">
+          <button id="lang-toggle" class="lang-btn">EN</button>
+        </div>
+        <div class="theme-toggle">
+          <input type="checkbox" id="theme-switch">
+          <label for="theme-switch" class="toggle-label">
+            <span class="toggle-icon light">☀️</span>
+            <span class="toggle-icon dark">🌙</span>
+            <span class="toggle-ball"></span>
+          </label>
+        </div>
+      </div>
+    </div>
 
-    <label>Material:</label>
+    <label id="material-label">חומר:</label>
     <div class="radio-group">
       <input type="radio" id="copper" name="material" value="copper" checked>
-      <label for="copper">Copper</label>
+      <label for="copper" id="copper-label">נחושת</label>
       <input type="radio" id="aluminium" name="material" value="aluminium">
-      <label for="aluminium">Aluminium</label>
+      <label for="aluminium" id="aluminium-label">אלומיניום</label>
     </div>
 
-    <label>Core Type:</label>
+    <label id="core-label">סוג ליבה:</label>
     <div class="radio-group">
       <input type="radio" id="single" name="core" value="single" checked>
-      <label for="single">Single-core</label>
+      <label for="single" id="single-label">חד-גידי</label>
       <input type="radio" id="multi" name="core" value="multi">
-      <label for="multi">Multi-core</label>
+      <label for="multi" id="multi-label">רב-גידי</label>
     </div>
 
-    <label>Cross-sectional area (S) [mm²]:</label>
-    <input type="text" id="surface" list="surface-options" placeholder="Enter or select cross-sectional area">
+    <label id="area-label">שטח חתך (A) [ממ²]:</label>
+    <input type="text" id="surface" list="surface-options" placeholder="הזן או בחר שטח חתך">
     <datalist id="surface-options">
       <option value="1.5">1.5 mm²</option>
       <option value="2.5">2.5 mm²</option>
@@ -47,11 +62,71 @@
       <option value="300">300 mm²</option>
     </datalist>
 
-    <button onclick="findRX()">Get r and x</button>
+    <button onclick="findRX()" id="find-btn">קבל r ו-x</button>
 
     <div class="result" id="output"></div>
+    
+    <div class="impedance-section">
+      <h3 id="calc-title">חישוב עכבת כבל</h3>
+      
+      <div class="math-equation">
+        <div class="equation-content">
+          <span class="equation-variable">Z</span>
+          <span class="equation-equals">=</span>
+          <span class="equation-variable">L</span>
+          <span class="equation-times">×</span>
+          <span class="equation-parenthesis">(</span>
+          <span class="equation-variable">r</span>
+          <span class="equation-plus">+</span>
+          <span class="equation-variable">j</span>
+          <span class="equation-variable">x</span>
+          <span class="equation-parenthesis">)</span>
+        </div>
+        <div class="equation-legend">
+          <div class="legend-item">
+            <span id="impedance-legend">Z # עכבה [Ω]</span>
+          </div>
+          <div class="legend-item">
+            <span id="length-legend">L # אורך כבל [km]</span>
+          </div>
+          <div class="legend-item">
+            <span id="resistance-legend">r # התנגדות [Ω/km]</span>
+          </div>
+          <div class="legend-item">
+            <span id="reactance-legend">x # היגב [Ω/km]</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="r-value" id="r-value-label">התנגדות (r) [Ω/km]:</label>
+          <input type="number" id="r-value" step="0.001" placeholder="הזן ערך r">
+        </div>
+        <button class="copy-btn" onclick="copyRValue()" id="copy-r-btn">העתק מלמעלה</button>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="x-value" id="x-value-label">היגב (x) [Ω/km]:</label>
+          <input type="number" id="x-value" step="0.001" placeholder="הזן ערך x">
+        </div>
+        <button class="copy-btn" onclick="copyXValue()" id="copy-x-btn">העתק מלמעלה</button>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="cable-length" id="cable-length-label">אורך כבל (L) [km]:</label>
+          <input type="number" id="cable-length" step="0.01" placeholder="הזן אורך כבל">
+        </div>
+      </div>
+      
+      <button onclick="calculateImpedance()" id="calc-btn">חשב עכבה</button>
+      
+      <div class="result" id="impedance-output"></div>
+    </div>
   </div>
-
+  
   <script src="script.js"></script>
 </body>
 </html>
