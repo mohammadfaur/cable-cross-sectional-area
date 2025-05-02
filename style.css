@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   margin: 0;
   padding: 0;
   background: #f0f2f5;
@@ -16,7 +16,7 @@ body {
   background: white;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -57,13 +57,20 @@ label {
   color: white;
 }
 
-input[type="number"] {
+input[type="number"],
+input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-top: 8px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
+}
+
+input[type="text"]:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 button {
@@ -103,7 +110,8 @@ button:hover {
     padding: 8px;
   }
 
-  input[type="number"] {
+  input[type="number"],
+  input[type="text"] {
     font-size: 14px;
   }
 

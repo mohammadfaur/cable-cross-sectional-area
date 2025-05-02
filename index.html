@@ -27,7 +27,25 @@
     </div>
 
     <label>Cross-sectional area (S) [mm²]:</label>
-    <input type="number" id="surface" min="1" placeholder="e.g., 4, 16, 95">
+    <input type="text" id="surface" list="surface-options" placeholder="Enter or select cross-sectional area">
+    <datalist id="surface-options">
+      <option value="1.5">1.5 mm²</option>
+      <option value="2.5">2.5 mm²</option>
+      <option value="4">4 mm²</option>
+      <option value="6">6 mm²</option>
+      <option value="10">10 mm²</option>
+      <option value="16">16 mm²</option>
+      <option value="25">25 mm²</option>
+      <option value="35">35 mm²</option>
+      <option value="50">50 mm²</option>
+      <option value="70">70 mm²</option>
+      <option value="95">95 mm²</option>
+      <option value="120">120 mm²</option>
+      <option value="150">150 mm²</option>
+      <option value="185">185 mm²</option>
+      <option value="240">240 mm²</option>
+      <option value="300">300 mm²</option>
+    </datalist>
 
     <button onclick="findRX()">Get r and x</button>
 
