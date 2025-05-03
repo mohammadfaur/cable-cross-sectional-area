@@ -91,7 +91,7 @@ const translations = {
     materialLabel: "חומר:",
     copper: "נחושת",
     aluminium: "אלומיניום",
-    coreLabel: "סוג ליבה:",
+    coreLabel: "סוג כבל:",
     single: "חד-גידי",
     multi: "רב-גידי",
     areaLabel: "שטח חתך (A) [mm²]:",
