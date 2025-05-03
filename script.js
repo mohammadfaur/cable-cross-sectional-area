@@ -263,7 +263,7 @@ function updateLanguage() {
   document.getElementById("calc-btn").textContent = translations[currentLang].calcBtn
 
   // Update document title
-  document.title = isHebrew ? "מחשבון כבלים" : "Cable Calculator"
+  document.title = isHebrew ? "חישוב עכבת כבלים" : "Cable Impedance Calculator"
 
   // If there are results displayed, update them
   if (lastFoundR !== null && lastFoundX !== null) {
