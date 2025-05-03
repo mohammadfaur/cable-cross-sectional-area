@@ -87,7 +87,7 @@ let lastCalculatedValues = null
 // Language translations
 const translations = {
   he: {
-    appTitle: "מחשבון התנגדות והיגב כבלים",
+    appTitle: "חישוב התנגדות והיגב כבלים",
     materialLabel: "חומר:",
     copper: "נחושת",
     aluminium: "אלומיניום",
