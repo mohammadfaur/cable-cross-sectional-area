@@ -1,0 +1,105 @@
+/* Responsive Design - Media Queries */
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .header-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  .controls-row {
+    gap: 8px;
+  }
+
+  .toggle-label {
+    width: 50px;
+    height: 26px;
+  }
+
+  .toggle-ball {
+    width: 20px;
+    height: 20px;
+  }
+
+  #theme-switch:checked + .toggle-label .toggle-ball {
+    transform: translateX(24px);
+  }
+
+  .lang-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .calculator-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .calc-btn {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  .radio-group label {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .result {
+    font-size: 14px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .copy-btn {
+    margin-top: 5px;
+    height: auto;
+  }
+
+  .angle-input-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .angle-or-separator {
+    margin-bottom: 5px;
+  }
+
+  .impedance-table {
+    font-size: 13px;
+  }
+
+  .impedance-table th,
+  .impedance-table td {
+    padding: 8px 6px;
+  }
+
+  .equation-content {
+    font-size: 18px;
+  }
+
+  .equation-legend {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,85 @@
+/* Table Styles for Results */
+
+/* Impedance Table Styles */
+.impedance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.impedance-table th,
+.impedance-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.impedance-table th {
+  background-color: var(--table-header);
+  color: white;
+  font-weight: 500;
+}
+
+.impedance-table tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+.impedance-table tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+.impedance-table td:first-child {
+  background-color: var(--table-first-col);
+  font-weight: 500;
+  text-align: left;
+}
+
+html.rtl .impedance-table td:first-child {
+  text-align: right;
+}
+
+/* Voltage Drop Table Styles */
+.voltage-drop-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.voltage-drop-table th,
+.voltage-drop-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.voltage-drop-table th {
+  background-color: var(--table-header);
+  color: white;
+  font-weight: 500;
+}
+
+.voltage-drop-table tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+.voltage-drop-table tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+.voltage-drop-table td:first-child {
+  background-color: var(--table-first-col);
+  font-weight: 500;
+  text-align: left;
+}
+
+html.rtl .voltage-drop-table td:first-child {
+  text-align: right;
+}

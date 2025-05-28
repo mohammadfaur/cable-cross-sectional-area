@@ -74,6 +74,29 @@ function updateLanguage() {
     { id: "copy-r-btn", key: "copyBtn" },
     { id: "copy-x-btn", key: "copyBtn" },
     { id: "calc-btn", key: "calcBtn" },
+
+    // Voltage Drop Calculator
+    { id: "voltage-drop-title", key: "voltageDropTitle" },
+    { id: "vd-voltage-drop-legend", key: "voltageDropLegend" },
+    { id: "vd-k-factor-legend", key: "kFactorLegend" },
+    { id: "vd-load-current-legend", key: "loadCurrentLegend" },
+    { id: "vd-distance-legend", key: "distanceLegend" },
+    { id: "vd-conductors-legend", key: "conductorsLegend" },
+    { id: "vd-phase-angle-legend", key: "phaseAngleLegend" },
+    { id: "phase-type-label", key: "phaseTypeLabel" },
+    { id: "single-phase-label", key: "singlePhase" },
+    { id: "three-phase-label", key: "threePhase" },
+    { id: "load-current-label", key: "loadCurrentLabel" },
+    { id: "distance-label", key: "distanceLabel" },
+    { id: "num-conductors-label", key: "numConductorsLabel" },
+    { id: "vd-r-value-label", key: "vdRValueLabel" },
+    { id: "vd-x-value-label", key: "vdXValueLabel" },
+    { id: "power-factor-label", key: "powerFactorLabel" },
+    { id: "phase-angle-label", key: "phaseAngleLabel" },
+    { id: "copy-vd-r-btn", key: "copyBtn" },
+    { id: "copy-vd-x-btn", key: "copyBtn" },
+    { id: "calculate-vd-btn", key: "calculateVDBtn" },
+    { id: "angle-or-text", key: "orText" },
   ]
 
   elements.forEach(({ id, key }) => {
@@ -99,6 +122,22 @@ function updateLanguage() {
   const numCables = document.getElementById("num-cables")
   if (numCables) numCables.placeholder = translations[currentLang].numCablesPlaceholder
 
+  // Voltage Drop placeholders
+  const loadCurrent = document.getElementById("load-current")
+  if (loadCurrent) loadCurrent.placeholder = translations[currentLang].loadCurrentPlaceholder
+
+  const distance = document.getElementById("distance")
+  if (distance) distance.placeholder = translations[currentLang].distancePlaceholder
+
+  const numConductors = document.getElementById("num-conductors")
+  if (numConductors) numConductors.placeholder = translations[currentLang].numConductorsPlaceholder
+
+  const powerFactor = document.getElementById("power-factor")
+  if (powerFactor) powerFactor.placeholder = translations[currentLang].powerFactorPlaceholder
+
+  const phaseAngle = document.getElementById("phase-angle")
+  if (phaseAngle) phaseAngle.placeholder = translations[currentLang].phaseAnglePlaceholder
+
   // Update document title
   document.title = isHebrew ? "תכנון מעגל חשמלי" : "Electrical System Design"
 
@@ -116,6 +155,17 @@ function updateLanguage() {
     window.CableApp.lastCalculatedValues
   ) {
     window.CableApp.updateImpedanceTable(window.CableApp.lastCalculatedValues())
+  }
+
+  // If there's a voltage drop table, update it
+  const voltageDropOutput = document.getElementById("voltage-drop-output")
+  if (
+    voltageDropOutput &&
+    voltageDropOutput.innerHTML.trim() !== "" &&
+    window.CableApp.updateVoltageDropResults &&
+    window.CableApp.lastVoltageDropValues
+  ) {
+    window.CableApp.updateVoltageDropResults(window.CableApp.lastVoltageDropValues())
   }
 }
 

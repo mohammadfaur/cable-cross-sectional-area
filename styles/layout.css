@@ -1,0 +1,73 @@
+/* Layout and Container Styles */
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: var(--container-bg);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Updated header row styles to keep everything on one line */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  white-space: nowrap;
+}
+
+/* Input Layout Styles */
+.input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.input-row .input-group {
+  flex: 1;
+}
+
+/* Angle Input Row for Power Factor and Phase Angle */
+.angle-input-row {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.angle-input-group {
+  flex: 1;
+}
+
+.angle-or-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  font-weight: bold;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+/* Section Styles */
+.rx-finder-section {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.impedance-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: none; /* Hidden by default */
+}

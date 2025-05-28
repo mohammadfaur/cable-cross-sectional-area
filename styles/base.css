@@ -1,0 +1,53 @@
+/* Base Styles and Typography */
+* {
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+  flex: 1;
+}
+
+h3 {
+  margin: 30px 0 15px;
+  color: var(--text);
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Force LTR for calculation results */
+.ltr-content {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: embed;
+}
+
+/* Add a new style for the result content that respects RTL */
+.result-content {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+
+/* Make sure the units are always displayed correctly */
+.result-content .unit {
+  direction: ltr;
+  display: inline-block;
+}

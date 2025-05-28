@@ -1,0 +1,183 @@
+/* UI Components: Buttons, Forms, Toggles */
+
+/* Language Toggle */
+.language-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.lang-btn {
+  background: var(--button-secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.lang-btn:hover {
+  background: var(--button-secondary-hover);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: relative;
+}
+
+.toggle-label {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background: #333;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.toggle-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.toggle-icon.light {
+  left: 10px;
+  opacity: 0;
+}
+
+.toggle-icon.dark {
+  right: 10px;
+  opacity: 1;
+}
+
+.toggle-ball {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+#theme-switch {
+  display: none;
+}
+
+#theme-switch:checked + .toggle-label .toggle-ball {
+  transform: translateX(30px);
+}
+
+#theme-switch:checked + .toggle-label .toggle-icon.light {
+  opacity: 1;
+}
+
+#theme-switch:checked + .toggle-label .toggle-icon.dark {
+  opacity: 0;
+}
+
+/* Radio Groups */
+.radio-group {
+  display: flex;
+  gap: 15px;
+  margin: 8px 0;
+  flex-wrap: wrap;
+}
+
+.radio-group label {
+  flex: 1;
+  background: var(--radio-bg);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 0;
+}
+
+.radio-group input {
+  display: none;
+}
+
+.radio-group input:checked + label {
+  background: var(--radio-selected);
+  color: white;
+}
+
+/* Form Inputs */
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--button-secondary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  background: var(--button-primary);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--button-primary-hover);
+}
+
+.copy-btn {
+  margin-top: 0;
+  padding: 10px;
+  background: var(--button-secondary);
+  height: 42px;
+  width: auto;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: var(--button-secondary-hover);
+}
+
+/* Result Display */
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--result-bg);
+  border-left: 4px solid var(--result-border);
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+html.rtl .result {
+  border-left: none;
+  border-right: 4px solid var(--result-border);
+}
+
+/* Input Highlighting */
+.highlight-input {
+  animation: highlight 1s ease;
+}

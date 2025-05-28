@@ -98,7 +98,7 @@
               <span class="equation-variable">n</span>
             </div>
           </div>
-          <span class="equation-times">×</span>
+          <span class="equation-dot">·</span>
           <span class="equation-parenthesis">(</span>
           <span class="equation-variable">r</span>
           <span class="equation-plus">+</span>
@@ -160,10 +160,129 @@
       <div class="result" id="impedance-output"></div>
     </div>
 
-    <!-- Placeholder sections for future calculators -->
+    <!-- Voltage Drop Calculator Section -->
     <div class="impedance-section" id="voltage-drop-section" style="display: none;">
-      <h3>חישוב מפל מתח</h3>
-      <p>מחשבון מפל מתח יתווסף בקרוב...</p>
+      <h3 id="voltage-drop-title">חישוב מפל מתח</h3>
+      
+      <div class="math-equation">
+        <div class="equation-content">
+          <span class="equation-variable">∆V</span>
+          <span class="equation-equals">=</span>
+          <span class="equation-variable">k</span>
+          <span class="equation-dot">·</span>
+          <span class="equation-variable">I</span><sub class="equation-subscript">b</sub>
+          <span class="equation-dot">·</span>
+          <div class="equation-fraction">
+            <div class="fraction-numerator">
+              <span class="equation-variable">L</span>
+            </div>
+            <div class="fraction-line"></div>
+            <div class="fraction-denominator">
+              <span class="equation-variable">n</span>
+            </div>
+          </div>
+          <span class="equation-dot">·</span>
+          <span class="equation-parenthesis">(</span>
+          <span class="equation-variable">r</span>
+          <span class="equation-dot">·</span>
+          <span class="equation-function">cos</span>
+          <span class="equation-parenthesis">(</span>
+          <span class="equation-variable">α</span>
+          <span class="equation-parenthesis">)</span>
+          <span class="equation-plus">+</span>
+          <span class="equation-variable">x</span>
+          <span class="equation-dot">·</span>
+          <span class="equation-function">sin</span>
+          <span class="equation-parenthesis">(</span>
+          <span class="equation-variable">α</span>
+          <span class="equation-parenthesis">)</span>
+          <span class="equation-parenthesis">)</span>
+        </div>
+        <div class="equation-legend">
+          <div class="legend-item">
+            <span id="vd-voltage-drop-legend">∆V # מפל מתח [V]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-k-factor-legend">k # מקדם (√3 תלת-פאזי, 2 חד-פאזי)</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-load-current-legend">Ib # זרם עומס [A]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-distance-legend">L # מרחק (כיוון אחד) [km]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-conductors-legend">n # מספר מוליכים</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-phase-angle-legend">α # זווית פאזה [°]</span>
+          </div>
+        </div>
+      </div>
+      
+      <label id="phase-type-label">סוג מערכת:</label>
+      <div class="radio-group">
+        <input type="radio" id="single-phase" name="phase-type" value="single" checked>
+        <label for="single-phase" id="single-phase-label">חד-פאזי</label>
+        <input type="radio" id="three-phase" name="phase-type" value="three">
+        <label for="three-phase" id="three-phase-label">תלת-פאזי</label>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="load-current" id="load-current-label">זרם עומס (Ib) [A]:</label>
+          <input type="number" id="load-current" step="0.1" min="0" placeholder="הזן זרם עומס">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="distance" id="distance-label">מרחק (L) [km]:</label>
+          <input type="number" id="distance" step="0.01" min="0" placeholder="הזן מרחק">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="num-conductors" id="num-conductors-label">מספר מוליכים (n):</label>
+          <input type="number" id="num-conductors" step="1" min="1" value="1" placeholder="הזן מספר מוליכים">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="vd-r-value" id="vd-r-value-label">התנגדות (r) [Ω/km]:</label>
+          <input type="number" id="vd-r-value" step="0.001" placeholder="הזן ערך r">
+        </div>
+        <button class="copy-btn" onclick="copyVDRValue()" id="copy-vd-r-btn">העתק מלמעלה</button>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="vd-x-value" id="vd-x-value-label">היגב (x) [Ω/km]:</label>
+          <input type="number" id="vd-x-value" step="0.001" placeholder="הזן ערך x">
+        </div>
+        <button class="copy-btn" onclick="copyVDXValue()" id="copy-vd-x-btn">העתק מלמעלה</button>
+      </div>
+      
+      <!-- Power Factor and Phase Angle side by side -->
+      <div class="angle-input-row">
+        <div class="angle-input-group">
+          <label for="power-factor" id="power-factor-label">Power Factor (PF):</label>
+          <input type="number" id="power-factor" step="0.01" min="-1" max="1" placeholder="הזן PF (-1 עד 1)">
+        </div>
+        <div class="angle-or-separator">
+          <span id="angle-or-text">או</span>
+        </div>
+        <div class="angle-input-group">
+          <label for="phase-angle" id="phase-angle-label">זווית פאזה (α) [°]:</label>
+          <input type="number" id="phase-angle" step="0.1" placeholder="הזן זווית פאזה">
+        </div>
+      </div>
+      
+      <button onclick="calculateVoltageDrop()" id="calculate-vd-btn">חשב מפל מתח</button>
+      
+      <div class="result" id="voltage-drop-output"></div>
     </div>
 
     <div class="impedance-section" id="short-circuit-1ph-section" style="display: none;">
@@ -177,11 +296,12 @@
     </div>
   </div>
   
-  <script src="scripts/lang.js"></script>
-  <script src="scripts/translate.js"></script>
-  <script src="scripts/theme.js"></script>
+  <script src="scripts/localized/lang.js"></script>
+  <script src="scripts/localized/translate.js"></script>
+  <script src="scripts/styles/theme.js"></script>
   <script src="scripts/fetch_rx.js"></script>
   <script src="scripts/impedance.js"></script>
+  <script src="scripts/voltage_drop.js"></script>
   <script src="scripts/calculators.js"></script>
   <script src="script.js"></script>
 </body>
