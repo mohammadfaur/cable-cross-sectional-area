@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.CableApp.initializeLanguage()
   }
 
+  // Initialize calculator sections
+  if (window.CableApp && window.CableApp.initializeSections) {
+    window.CableApp.initializeSections()
+  }
+
   // Set up language toggle event listener
   const langToggle = document.getElementById("lang-toggle")
   if (langToggle) {

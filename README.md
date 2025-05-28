@@ -3,7 +3,7 @@
 A bilingual web tool for electrical engineers to quickly find the resistance (`r`) and reactance (`x`) of various copper and aluminum cables, and to calculate total impedance using:
 
 
-`Z = (L / n) × (r + jx)`
+$`Z={{L \over n} \times (r+jx)}`$
 
 Supports **Hebrew** 🇮🇱 and **English** 🇬🇧, **light/dark mode**, and **mobile responsiveness**.
 

@@ -43,6 +43,7 @@ function updateLanguage() {
   // Update all text elements
   const elements = [
     { id: "app-title", key: "appTitle" },
+    { id: "rx-finder-title", key: "rxFinderTitle" },
     { id: "material-label", key: "materialLabel" },
     { id: "copper-label", key: "copper" },
     { id: "aluminium-label", key: "aluminium" },
@@ -51,6 +52,15 @@ function updateLanguage() {
     { id: "multi-label", key: "multi" },
     { id: "area-label", key: "areaLabel" },
     { id: "find-btn", key: "findBtn" },
+
+    // Calculator buttons
+    { id: "cable-impedance-btn", key: "cableImpedanceBtn" },
+    { id: "voltage-drop-btn", key: "voltageDropBtn" },
+    { id: "short-circuit-1ph-btn", key: "shortCircuit1PhBtn" },
+    { id: "short-circuit-3ph-btn", key: "shortCircuit3PhBtn" },
+    { id: "show-hide-all-btn", key: "showHideAllBtn" },
+    { id: "rx-finder-btn", key: "rxFinderBtn" },
+
     { id: "calc-title", key: "calcTitle" },
     { id: "impedance-legend", key: "impedanceLegend" },
     { id: "length-legend", key: "lengthLegend" },
@@ -90,7 +100,7 @@ function updateLanguage() {
   if (numCables) numCables.placeholder = translations[currentLang].numCablesPlaceholder
 
   // Update document title
-  document.title = isHebrew ? "חישוב עכבת כבלים" : "Cable Impedance Calculator"
+  document.title = isHebrew ? "תכנון מעגל חשמלי" : "Electrical System Design"
 
   // If there are results displayed, update them (only if values exist)
   if (window.CableApp.updateResults && window.CableApp.lastFoundR && window.CableApp.lastFoundR() !== null) {
@@ -128,3 +138,5 @@ window.CableApp.initializeLanguage = initializeLanguage
 window.CableApp.currentLang = () => currentLang
 window.CableApp.getCurrentLang = () => currentLang
 window.CableApp.getTranslations = () => window.CableApp?.translations
+
+console.log("Translation module loaded successfully!")

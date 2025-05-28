@@ -1,7 +1,8 @@
 // Language translations data
 const translations = {
   he: {
-    appTitle: "חישוב התנגדות והיגב כבלים",
+    appTitle: "תכנון מעגל חשמלי",
+    rxFinderTitle: "מוצא התנגדות והיגב ליחידת אורך של כבלים",
     materialLabel: "חומר:",
     copper: "נחושת",
     aluminium: "אלומיניום",
@@ -11,6 +12,15 @@ const translations = {
     areaLabel: "שטח חתך (A) [mm²]:",
     areaPlaceholder: "הזן או בחר שטח חתך",
     findBtn: "קבל r ו-x",
+
+    // Calculator buttons
+    cableImpedanceBtn: "עכבת כבל",
+    voltageDropBtn: "מפל מתח",
+    shortCircuit1PhBtn: "קצר חד-פאזי",
+    shortCircuit3PhBtn: "קצר תלת-פאזי",
+    showHideAllBtn: "הצג/הסתר הכל",
+    rxFinderBtn: "מוצא r ו-x",
+
     calcTitle: "חישוב עכבת כבל",
     impedanceLegend: "Z # עכבה [Ω]",
     lengthLegend: "L # אורך כבל [km]",
@@ -39,7 +49,8 @@ const translations = {
     enterValid: "אנא הזן מספרים תקינים עבור r, x, אורך כבל ומספר כבלים",
   },
   en: {
-    appTitle: "Cable Resistance & Reactance Finder",
+    appTitle: "Electrical System Design",
+    rxFinderTitle: "Cable Resistance & Reactance Per Unit of Length Finder",
     materialLabel: "Material:",
     copper: "Copper",
     aluminium: "Aluminium",
@@ -49,6 +60,15 @@ const translations = {
     areaLabel: "Cross-sectional area (A) [mm²]:",
     areaPlaceholder: "Enter or select cross-sectional area",
     findBtn: "Get r and x",
+
+    // Calculator buttons
+    cableImpedanceBtn: "Cable Impedance",
+    voltageDropBtn: "Voltage Drop",
+    shortCircuit1PhBtn: "Short Circuit 1φ",
+    shortCircuit3PhBtn: "Short Circuit 3φ",
+    showHideAllBtn: "Show/Hide All",
+    rxFinderBtn: "R & X Finder",
+
     calcTitle: "Calculate Cable Impedance",
     impedanceLegend: "Z # Impedance [Ω]",
     lengthLegend: "L # Cable length [km]",
@@ -81,3 +101,5 @@ const translations = {
 // Initialize the global namespace and expose translations
 window.CableApp = window.CableApp || {}
 window.CableApp.translations = translations
+
+console.log("Language data loaded successfully!")

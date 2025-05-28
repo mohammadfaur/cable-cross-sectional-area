@@ -2,14 +2,14 @@
 <html lang="he" class="dark-mode rtl">
 <head>
   <meta charset="UTF-8">
-  <title>חישוב עכבת כבלים</title>
+  <title>תכנון מעגל חשמלי</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <div class="header-row">
-      <h2 id="app-title">חישוב התנגדות והיגב כבלים</h2>
+      <h2 id="app-title">תכנון מעגל חשמלי</h2>
       <div class="controls-row">
         <div class="language-toggle">
           <button id="lang-toggle" class="lang-btn">EN</button>
@@ -25,59 +25,79 @@
       </div>
     </div>
 
-    <label id="material-label">חומר:</label>
-    <div class="radio-group">
-      <input type="radio" id="copper" name="material" value="copper" checked>
-      <label for="copper" id="copper-label">נחושת</label>
-      <input type="radio" id="aluminium" name="material" value="aluminium">
-      <label for="aluminium" id="aluminium-label">אלומיניום</label>
+    <!-- Calculator Selection Buttons -->
+    <div class="calculator-buttons">
+      <button class="calc-btn" id="rx-finder-btn" onclick="toggleCalculatorSection('rx-finder-section')">מוצא r ו-x</button>
+      <button class="calc-btn" id="cable-impedance-btn" onclick="toggleCalculatorSection('impedance-section')">עכבת כבל</button>
+      <button class="calc-btn" id="voltage-drop-btn" onclick="toggleCalculatorSection('voltage-drop-section')">מפל מתח</button>
+      <button class="calc-btn" id="short-circuit-1ph-btn" onclick="toggleCalculatorSection('short-circuit-1ph-section')">קצר חד-פאזי</button>
+      <button class="calc-btn" id="short-circuit-3ph-btn" onclick="toggleCalculatorSection('short-circuit-3ph-section')">קצר תלת-פאזי</button>
+      <button class="calc-btn show-hide-all" id="show-hide-all-btn" onclick="toggleAllSections()">הצג/הסתר הכל</button>
     </div>
 
-    <label id="core-label">סוג כבל:</label>
-    <div class="radio-group">
-      <input type="radio" id="single" name="core" value="single" checked>
-      <label for="single" id="single-label">חד-גידי</label>
-      <input type="radio" id="multi" name="core" value="multi">
-      <label for="multi" id="multi-label">רב-גידי</label>
+    <!-- R&X Finder Section -->
+    <div class="rx-finder-section" id="rx-finder-section">
+      <h3 id="rx-finder-title">מוצא התנגדות והיגב ליחידת אורך של כבלים</h3>
+      
+      <label id="material-label">חומר:</label>
+      <div class="radio-group">
+        <input type="radio" id="copper" name="material" value="copper" checked>
+        <label for="copper" id="copper-label">נחושת</label>
+        <input type="radio" id="aluminium" name="material" value="aluminium">
+        <label for="aluminium" id="aluminium-label">אלומיניום</label>
+      </div>
+
+      <label id="core-label">סוג כבל:</label>
+      <div class="radio-group">
+        <input type="radio" id="single" name="core" value="single" checked>
+        <label for="single" id="single-label">חד-גידי</label>
+        <input type="radio" id="multi" name="core" value="multi">
+        <label for="multi" id="multi-label">רב-גידי</label>
+      </div>
+
+      <label id="area-label">שטח חתך (A) [ממ²]:</label>
+      <input type="text" id="surface" list="surface-options" placeholder="הזן או בחר שטח חתך">
+      <datalist id="surface-options">
+        <option value="1.5">1.5 mm²</option>
+        <option value="2.5">2.5 mm²</option>
+        <option value="4">4 mm²</option>
+        <option value="6">6 mm²</option>
+        <option value="10">10 mm²</option>
+        <option value="16">16 mm²</option>
+        <option value="25">25 mm²</option>
+        <option value="35">35 mm²</option>
+        <option value="50">50 mm²</option>
+        <option value="70">70 mm²</option>
+        <option value="95">95 mm²</option>
+        <option value="120">120 mm²</option>
+        <option value="150">150 mm²</option>
+        <option value="185">185 mm²</option>
+        <option value="240">240 mm²</option>
+        <option value="300">300 mm²</option>
+      </datalist>
+
+      <button onclick="findRX()" id="find-btn">קבל r ו-x</button>
+
+      <div class="result" id="output"></div>
     </div>
-
-    <label id="area-label">שטח חתך (A) [ממ²]:</label>
-    <input type="text" id="surface" list="surface-options" placeholder="הזן או בחר שטח חתך">
-    <datalist id="surface-options">
-      <option value="1.5">1.5 mm²</option>
-      <option value="2.5">2.5 mm²</option>
-      <option value="4">4 mm²</option>
-      <option value="6">6 mm²</option>
-      <option value="10">10 mm²</option>
-      <option value="16">16 mm²</option>
-      <option value="25">25 mm²</option>
-      <option value="35">35 mm²</option>
-      <option value="50">50 mm²</option>
-      <option value="70">70 mm²</option>
-      <option value="95">95 mm²</option>
-      <option value="120">120 mm²</option>
-      <option value="150">150 mm²</option>
-      <option value="185">185 mm²</option>
-      <option value="240">240 mm²</option>
-      <option value="300">300 mm²</option>
-    </datalist>
-
-    <button onclick="findRX()" id="find-btn">קבל r ו-x</button>
-
-    <div class="result" id="output"></div>
     
-    <div class="impedance-section">
+    <!-- Cable Impedance Calculator Section -->
+    <div class="impedance-section" id="impedance-section">
       <h3 id="calc-title">חישוב עכבת כבל</h3>
       
       <div class="math-equation">
         <div class="equation-content">
           <span class="equation-variable">Z</span>
           <span class="equation-equals">=</span>
-          <span class="equation-parenthesis">(</span>
-          <span class="equation-variable">L</span>
-          <span class="equation-times">÷</span>
-          <span class="equation-variable">n</span>
-          <span class="equation-parenthesis">)</span>
+          <div class="equation-fraction">
+            <div class="fraction-numerator">
+              <span class="equation-variable">L</span>
+            </div>
+            <div class="fraction-line"></div>
+            <div class="fraction-denominator">
+              <span class="equation-variable">n</span>
+            </div>
+          </div>
           <span class="equation-times">×</span>
           <span class="equation-parenthesis">(</span>
           <span class="equation-variable">r</span>
@@ -139,6 +159,22 @@
       
       <div class="result" id="impedance-output"></div>
     </div>
+
+    <!-- Placeholder sections for future calculators -->
+    <div class="impedance-section" id="voltage-drop-section" style="display: none;">
+      <h3>חישוב מפל מתח</h3>
+      <p>מחשבון מפל מתח יתווסף בקרוב...</p>
+    </div>
+
+    <div class="impedance-section" id="short-circuit-1ph-section" style="display: none;">
+      <h3>חישוב קצר חד-פאזי</h3>
+      <p>מחשבון קצר חד-פאזי יתווסף בקרוב...</p>
+    </div>
+
+    <div class="impedance-section" id="short-circuit-3ph-section" style="display: none;">
+      <h3>חישוב קצר תלת-פאזי</h3>
+      <p>מחשבון קצר תלת-פאזי יתווסף בקרוב...</p>
+    </div>
   </div>
   
   <script src="scripts/lang.js"></script>
@@ -146,6 +182,7 @@
   <script src="scripts/theme.js"></script>
   <script src="scripts/fetch_rx.js"></script>
   <script src="scripts/impedance.js"></script>
+  <script src="scripts/calculators.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
