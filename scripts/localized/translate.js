@@ -83,6 +83,12 @@ function updateLanguage() {
     { id: "vd-distance-legend", key: "distanceLegend" },
     { id: "vd-conductors-legend", key: "conductorsLegend" },
     { id: "vd-phase-angle-legend", key: "phaseAngleLegend" },
+
+    // New voltage drop total equation elements
+    { id: "vd-total-voltage-legend", key: "totalVoltageLegend" },
+    { id: "vd-partial-voltage-legend", key: "partialVoltageLegend" },
+    { id: "num-calculations-label", key: "numCalculationsLabel" },
+
     { id: "phase-type-label", key: "phaseTypeLabel" },
     { id: "single-phase-label", key: "singlePhase" },
     { id: "three-phase-label", key: "threePhase" },
@@ -97,6 +103,7 @@ function updateLanguage() {
     { id: "copy-vd-x-btn", key: "copyBtn" },
     { id: "calculate-vd-btn", key: "calculateVDBtn" },
     { id: "angle-or-text", key: "orText" },
+    { id: "cancel-loop-btn", key: "cancelLoop" },
   ]
 
   elements.forEach(({ id, key }) => {
@@ -121,6 +128,10 @@ function updateLanguage() {
 
   const numCables = document.getElementById("num-cables")
   if (numCables) numCables.placeholder = translations[currentLang].numCablesPlaceholder
+
+  // New voltage drop placeholders
+  const numCalculations = document.getElementById("num-calculations")
+  if (numCalculations) numCalculations.placeholder = translations[currentLang].numCalculationsPlaceholder
 
   // Voltage Drop placeholders
   const loadCurrent = document.getElementById("load-current")
@@ -189,4 +200,4 @@ window.CableApp.currentLang = () => currentLang
 window.CableApp.getCurrentLang = () => currentLang
 window.CableApp.getTranslations = () => window.CableApp?.translations
 
-console.log("Translation module loaded successfully!")
+console.log("Enhanced translation module loaded successfully!")

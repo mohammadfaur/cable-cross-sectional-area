@@ -26,7 +26,7 @@
     </div>
 
     <!-- Calculator Selection Buttons -->
-    <div class="calculator-buttons">
+    <div class="calculator-buttons blurable-content">
       <button class="calc-btn" id="rx-finder-btn" onclick="toggleCalculatorSection('rx-finder-section')">מוצא r ו-x</button>
       <button class="calc-btn" id="cable-impedance-btn" onclick="toggleCalculatorSection('impedance-section')">עכבת כבל</button>
       <button class="calc-btn" id="voltage-drop-btn" onclick="toggleCalculatorSection('voltage-drop-section')">מפל מתח</button>
@@ -82,7 +82,7 @@
     </div>
     
     <!-- Cable Impedance Calculator Section -->
-    <div class="impedance-section" id="impedance-section">
+    <div class="impedance-section blurable-content" id="impedance-section">
       <h3 id="calc-title">חישוב עכבת כבל</h3>
       
       <div class="math-equation">
@@ -164,6 +164,7 @@
     <div class="impedance-section" id="voltage-drop-section" style="display: none;">
       <h3 id="voltage-drop-title">חישוב מפל מתח</h3>
       
+      <!-- First Equation -->
       <div class="math-equation">
         <div class="equation-content">
           <span class="equation-variable">∆V</span>
@@ -217,6 +218,35 @@
           <div class="legend-item">
             <span id="vd-phase-angle-legend">α # זווית פאזה [°]</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Second Equation for Total Voltage Drop -->
+      <div class="math-equation">
+        <div class="equation-content">
+          <span class="equation-variable">∆V</span><sub class="equation-subscript">T</sub>
+          <span class="equation-equals">=</span>
+          <div class="equation-summation">
+            <span class="equation-variable">∑</span>
+            <sub class="summation-index">i</sub>
+          </div>
+          <span class="equation-variable">∆V</span><sub class="equation-subscript">i</sub>
+        </div>
+        <div class="equation-legend">
+          <div class="legend-item">
+            <span id="vd-total-voltage-legend">∆VT # מפל מתח כולל [V]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-partial-voltage-legend">∆Vi # חישוב מפל מתח חלקי</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Number of Calculations Input -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="num-calculations" id="num-calculations-label">מספר חישובים (i):</label>
+          <input type="number" id="num-calculations" step="1" min="1" value="1" placeholder="הזן מספר חישובים">
         </div>
       </div>
       
@@ -282,15 +312,23 @@
       
       <button onclick="calculateVoltageDrop()" id="calculate-vd-btn">חשב מפל מתח</button>
       
+      <!-- Loop Mode Controls (hidden by default) -->
+      <div class="loop-controls" id="loop-controls" style="display: none;">
+        <div class="loop-progress">
+          <span id="loop-progress-text">מחשב ∆V1 מתוך 3</span>
+        </div>
+        <button class="cancel-btn" onclick="cancelLoopMode()" id="cancel-loop-btn">ביטול (ESC)</button>
+      </div>
+      
       <div class="result" id="voltage-drop-output"></div>
     </div>
 
-    <div class="impedance-section" id="short-circuit-1ph-section" style="display: none;">
+    <div class="impedance-section blurable-content" id="short-circuit-1ph-section" style="display: none;">
       <h3>חישוב קצר חד-פאזי</h3>
       <p>מחשבון קצר חד-פאזי יתווסף בקרוב...</p>
     </div>
 
-    <div class="impedance-section" id="short-circuit-3ph-section" style="display: none;">
+    <div class="impedance-section blurable-content" id="short-circuit-3ph-section" style="display: none;">
       <h3>חישוב קצר תלת-פאזי</h3>
       <p>מחשבון קצר תלת-פאזי יתווסף בקרוב...</p>
     </div>
