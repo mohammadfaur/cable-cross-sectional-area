@@ -8,23 +8,24 @@ function calculateImpedance() {
   const r = Number.parseFloat(document.getElementById("r-value").value)
   const x = Number.parseFloat(document.getElementById("x-value").value)
   const length = Number.parseFloat(document.getElementById("cable-length").value)
+  const numCables = Number.parseFloat(document.getElementById("num-cables").value) || 1 // Default to 1 if empty
 
   setTimeout(() => {
     const currentLang = window.CableApp.getCurrentLang ? window.CableApp.getCurrentLang() : "he"
     const translations = window.CableApp.getTranslations ? window.CableApp.getTranslations() : null
 
-    if (isNaN(r) || isNaN(x) || isNaN(length)) {
+    if (isNaN(r) || isNaN(x) || isNaN(length) || isNaN(numCables) || numCables <= 0) {
       const message =
         translations && translations[currentLang]
           ? translations[currentLang].enterValid
-          : "אנא הזן מספרים תקינים עבור r, x ואורך כבל"
+          : "אנא הזן מספרים תקינים עבור r, x, אורך כבל ומספר כבלים"
       alert(message)
       return
     }
 
-    // Calculate impedance using the formula Z = L * (r + jx)
-    const realPart = length * r
-    const imagPart = length * x
+    // Calculate impedance using the formula Z = (L / n) * (r + jx)
+    const realPart = (length / numCables) * r
+    const imagPart = (length / numCables) * x
 
     // Calculate magnitude and angle
     const magnitude = Math.sqrt(realPart * realPart + imagPart * imagPart)
@@ -146,5 +147,5 @@ window.CableApp.calculateImpedance = calculateImpedance
 window.CableApp.updateImpedanceTable = updateImpedanceTable
 window.CableApp.lastCalculatedValues = () => lastCalculatedValues
 
-// Make functions available globally for HTML onclick handlers - THIS WAS MISSING!
+// Make functions available globally for HTML onclick handlers
 window.calculateImpedance = calculateImpedance

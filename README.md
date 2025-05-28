@@ -2,9 +2,8 @@
 
 A bilingual web tool for electrical engineers to quickly find the resistance (`r`) and reactance (`x`) of various copper and aluminum cables, and to calculate total impedance using:
 
-\[
-Z = \frac{L}{n} \times (r + jx)
-\]
+
+`Z = (L / n) × (r + jx)`
 
 Supports **Hebrew** 🇮🇱 and **English** 🇬🇧, **light/dark mode**, and **mobile responsiveness**.
 
@@ -33,5 +32,3 @@ Supports **Hebrew** 🇮🇱 and **English** 🇬🇧, **light/dark mode**, and 
 - HTML, CSS (custom themed with variables)
 - Vanilla JavaScript (modular: `fetch_rx.js`, `impedance.js`, etc.)
 - No frameworks, no dependencies
-
----

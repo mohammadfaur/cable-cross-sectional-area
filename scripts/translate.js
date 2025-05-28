@@ -56,9 +56,11 @@ function updateLanguage() {
     { id: "length-legend", key: "lengthLegend" },
     { id: "resistance-legend", key: "resistanceLegend" },
     { id: "reactance-legend", key: "reactanceLegend" },
+    { id: "cables-legend", key: "cablesLegend" },
     { id: "r-value-label", key: "rValueLabel" },
     { id: "x-value-label", key: "xValueLabel" },
     { id: "cable-length-label", key: "cableLengthLabel" },
+    { id: "num-cables-label", key: "numCablesLabel" },
     { id: "copy-r-btn", key: "copyBtn" },
     { id: "copy-x-btn", key: "copyBtn" },
     { id: "calc-btn", key: "calcBtn" },
@@ -83,6 +85,9 @@ function updateLanguage() {
 
   const cableLength = document.getElementById("cable-length")
   if (cableLength) cableLength.placeholder = translations[currentLang].cableLengthPlaceholder
+
+  const numCables = document.getElementById("num-cables")
+  if (numCables) numCables.placeholder = translations[currentLang].numCablesPlaceholder
 
   // Update document title
   document.title = isHebrew ? "חישוב עכבת כבלים" : "Cable Impedance Calculator"

@@ -73,7 +73,11 @@
         <div class="equation-content">
           <span class="equation-variable">Z</span>
           <span class="equation-equals">=</span>
+          <span class="equation-parenthesis">(</span>
           <span class="equation-variable">L</span>
+          <span class="equation-times">÷</span>
+          <span class="equation-variable">n</span>
+          <span class="equation-parenthesis">)</span>
           <span class="equation-times">×</span>
           <span class="equation-parenthesis">(</span>
           <span class="equation-variable">r</span>
@@ -88,6 +92,9 @@
           </div>
           <div class="legend-item">
             <span id="length-legend">L # אורך כבל [km]</span>
+          </div>
+          <div class="legend-item">
+            <span id="cables-legend">n # מספר כבלים במקביל</span>
           </div>
           <div class="legend-item">
             <span id="resistance-legend">r # התנגדות [Ω/km]</span>
@@ -118,6 +125,13 @@
         <div class="input-group">
           <label for="cable-length" id="cable-length-label">אורך כבל (L) [km]:</label>
           <input type="number" id="cable-length" step="0.01" placeholder="הזן אורך כבל">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="num-cables" id="num-cables-label">מספר כבלים במקביל (n):</label>
+          <input type="number" id="num-cables" step="1" min="1" value="1" placeholder="הזן מספר כבלים">
         </div>
       </div>
       
