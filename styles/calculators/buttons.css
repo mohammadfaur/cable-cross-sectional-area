@@ -1,0 +1,158 @@
+/* Calculator Navigation and Button Styles */
+
+/* Calculator Buttons */
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.calc-btn {
+  background: var(--button-secondary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calc-btn:hover {
+  background: var(--button-secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.calc-btn.active {
+  background: var(--button-primary);
+  box-shadow: 0 0 0 2px var(--button-primary);
+}
+
+.calc-btn.active:hover {
+  background: var(--button-primary-hover);
+}
+
+/* Special styling for show/hide all button */
+.calc-btn.show-hide-all {
+  background: #e74c3c;
+}
+
+.calc-btn.show-hide-all:hover {
+  background: #c0392b;
+}
+
+/* Calculate buttons for individual impedances */
+.calculate-impedance-btn {
+  margin-top: 15px;
+  background: var(--button-secondary);
+  width: auto;
+  display: inline-block;
+  padding: 8px 15px;
+}
+
+.calculate-impedance-btn:hover {
+  background: var(--button-secondary-hover);
+}
+
+.calculate-impedance-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Calculate Zk3ph Button Container */
+.calculate-zk3ph-btn-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.calculate-zk3ph-btn-container button {
+  background: var(--button-primary);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+}
+
+.calculate-zk3ph-btn-container button:hover {
+  background: var(--button-primary-hover);
+}
+
+.calculate-zk3ph-btn-container button:disabled {
+  background: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+#calculate-zk3ph-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+#calculate-sc3ph-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+#confirm-impedance-btn {
+  margin: 15px 0;
+  background: var(--button-secondary);
+}
+
+#confirm-impedance-btn:hover {
+  background: var(--button-secondary-hover);
+}
+
+.cancel-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0;
+  width: auto;
+}
+
+.cancel-btn:hover {
+  background: #c0392b;
+}
+
+/* Integration Buttons */
+.integration-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.integration-btn {
+  background: var(--button-secondary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0;
+  width: auto;
+  white-space: nowrap;
+}
+
+.integration-btn:hover {
+  background: var(--button-secondary-hover);
+}

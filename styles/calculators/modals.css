@@ -1,0 +1,183 @@
+/* Modal and Overlay Styles */
+
+/* Modal Styles for Zk3ph Calculator */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background: var(--container-bg);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text);
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-close:hover {
+  color: #e74c3c;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  margin-top: 0;
+}
+
+/* Calculation Method Modal Specific Styles */
+.calculation-options {
+  margin: 20px 0;
+}
+
+.calculation-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 15px 0;
+  padding: 15px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calculation-option:hover {
+  border-color: var(--button-secondary);
+  background: var(--equation-bg);
+}
+
+.calculation-option input[type="radio"] {
+  width: auto;
+  margin: 0;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.calculation-option input[type="radio"]:checked + .calculation-option-label {
+  color: var(--button-secondary);
+}
+
+.calculation-option:has(input[type="radio"]:checked) {
+  border-color: var(--button-secondary);
+  background: var(--equation-bg);
+  box-shadow: 0 0 0 1px var(--button-secondary);
+}
+
+.calculation-option-label {
+  flex: 1;
+  cursor: pointer;
+  margin: 0;
+}
+
+.option-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.option-formula {
+  margin: 10px 0;
+  padding: 8px;
+  background: var(--container-bg);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.option-formula .equation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  color: var(--text);
+  direction: ltr !important;
+  flex-wrap: wrap;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.option-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Responsive Modal */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-header,
+  .modal-body {
+    padding: 15px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .calculation-option {
+    padding: 12px;
+  }
+
+  .option-formula .equation-content {
+    font-size: 14px;
+  }
+
+  .option-title {
+    font-size: 14px;
+  }
+
+  .option-description {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,140 @@
+/* Table Styles for Results */
+
+/* Impedance Table Styles */
+.impedance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.impedance-table th,
+.impedance-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.impedance-table th {
+  background-color: var(--table-header);
+  color: white;
+  font-weight: 500;
+}
+
+.impedance-table tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+.impedance-table tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+.impedance-table td:first-child {
+  background-color: var(--table-first-col);
+  font-weight: 500;
+  text-align: left;
+}
+
+html.rtl .impedance-table td:first-child {
+  text-align: right;
+}
+
+/* Voltage Drop Table Styles */
+.voltage-drop-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.voltage-drop-table th,
+.voltage-drop-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.voltage-drop-table th {
+  background-color: var(--table-header);
+  color: white;
+  font-weight: 500;
+}
+
+.voltage-drop-table tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+.voltage-drop-table tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+.voltage-drop-table td:first-child {
+  background-color: var(--table-first-col);
+  font-weight: 500;
+  text-align: left;
+}
+
+html.rtl .voltage-drop-table td:first-child {
+  text-align: right;
+}
+
+/* Special styling for pending calculations */
+.voltage-drop-table .pending-row {
+  background-color: var(--table-row-even) !important;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.voltage-drop-table .pending-row:hover {
+  background-color: var(--table-row-hover) !important;
+}
+
+.voltage-drop-table .pending-row td {
+  color: var(--text-secondary);
+}
+
+/* Special styling for partial total row */
+.voltage-drop-table .partial-total-row {
+  background-color: var(--button-secondary) !important;
+  color: white;
+  font-weight: bold;
+}
+
+.voltage-drop-table .partial-total-row:hover {
+  background-color: var(--button-secondary-hover) !important;
+}
+
+.voltage-drop-table .partial-total-row td {
+  background-color: transparent;
+  color: white;
+}
+
+/* Special styling for final total row in multiple calculations */
+.voltage-drop-table .total-row {
+  background-color: var(--button-primary) !important;
+  color: white;
+  font-weight: bold;
+}
+
+.voltage-drop-table .total-row:hover {
+  background-color: var(--button-primary-hover) !important;
+}
+
+.voltage-drop-table .total-row td {
+  background-color: transparent;
+  color: white;
+}
+
+/* Mathematical subscripts in tables */
+.voltage-drop-table sub {
+  font-size: 0.7em;
+  vertical-align: baseline;
+  position: relative;
+  top: 0.4em;
+}

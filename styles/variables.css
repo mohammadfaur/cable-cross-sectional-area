@@ -1,0 +1,103 @@
+/* CSS Custom Properties for Theme Variables */
+:root {
+  /* Light mode colors */
+  --light-bg: #f0f2f5;
+  --light-container-bg: #ffffff;
+  --light-text: #333333;
+  --light-text-secondary: #555555;
+  --light-border: #dddddd;
+  --light-input-bg: #ffffff;
+  --light-input-border: #cccccc;
+  --light-radio-bg: #ecf0f1;
+  --light-radio-selected: #3498db;
+  --light-button-primary: #2ecc71;
+  --light-button-primary-hover: #27ae60;
+  --light-button-secondary: #3498db;
+  --light-button-secondary-hover: #2980b9;
+  --light-result-bg: #eafaf1;
+  --light-result-border: #2ecc71;
+  --light-equation-bg: #f8f9fa;
+  --light-table-header: #3498db;
+  --light-table-row-even: #f8f9fa;
+  --light-table-row-hover: #e8f4f8;
+  --light-table-first-col: #f1f8ff;
+
+  /* Dark mode colors */
+  --dark-bg: #121212;
+  --dark-container-bg: #1e1e1e;
+  --dark-text: #e0e0e0;
+  --dark-text-secondary: #b0b0b0;
+  --dark-border: #333333;
+  --dark-input-bg: #2d2d2d;
+  --dark-input-border: #444444;
+  --dark-radio-bg: #2d2d2d;
+  --dark-radio-selected: #2980b9;
+  --dark-button-primary: #2a9d5d;
+  --dark-button-primary-hover: #218c4e;
+  --dark-button-secondary: #2980b9;
+  --dark-button-secondary-hover: #1e6091;
+  --dark-result-bg: #1a3328;
+  --dark-result-border: #2a9d5d;
+  --dark-equation-bg: #2d2d2d;
+  --dark-table-header: #2980b9;
+  --dark-table-row-even: #252525;
+  --dark-table-row-hover: #2d3436;
+  --dark-table-first-col: #1e2a38;
+}
+
+/* Default to dark mode */
+html {
+  --bg: var(--dark-bg);
+  --container-bg: var(--dark-container-bg);
+  --text: var(--dark-text);
+  --text-secondary: var(--dark-text-secondary);
+  --border: var(--dark-border);
+  --input-bg: var(--dark-input-bg);
+  --input-border: var(--dark-input-border);
+  --radio-bg: var(--dark-radio-bg);
+  --radio-selected: var(--dark-radio-selected);
+  --button-primary: var(--dark-button-primary);
+  --button-primary-hover: var(--dark-button-primary-hover);
+  --button-secondary: var(--dark-button-secondary);
+  --button-secondary-hover: var(--dark-button-secondary-hover);
+  --result-bg: var(--dark-result-bg);
+  --result-border: var(--dark-result-border);
+  --equation-bg: var(--dark-equation-bg);
+  --table-header: var(--dark-table-header);
+  --table-row-even: var(--dark-table-row-even);
+  --table-row-hover: var(--dark-table-row-hover);
+  --table-first-col: var(--dark-table-first-col);
+}
+
+/* Light mode class */
+html.light-mode {
+  --bg: var(--light-bg);
+  --container-bg: var(--light-container-bg);
+  --text: var(--light-text);
+  --text-secondary: var(--light-text-secondary);
+  --border: var(--light-border);
+  --input-bg: var(--light-input-bg);
+  --input-border: var(--light-input-border);
+  --radio-bg: var(--light-radio-bg);
+  --radio-selected: var(--light-radio-selected);
+  --button-primary: var(--light-button-primary);
+  --button-primary-hover: var(--light-button-primary-hover);
+  --button-secondary: var(--light-button-secondary);
+  --button-secondary-hover: var(--light-button-secondary-hover);
+  --result-bg: var(--light-result-bg);
+  --result-border: var(--light-result-border);
+  --equation-bg: var(--light-equation-bg);
+  --table-header: var(--light-table-header);
+  --table-row-even: var(--light-table-row-even);
+  --table-row-hover: var(--light-table-row-hover);
+  --table-first-col: var(--light-table-first-col);
+}
+
+/* RTL Support */
+html.rtl {
+  direction: rtl;
+}
+
+html.ltr {
+  direction: ltr;
+}

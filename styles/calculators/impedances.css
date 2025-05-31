@@ -1,0 +1,466 @@
+/* Impedance Calculator Specific Styles */
+
+/* Impedance Selection Styles */
+.impedance-selection {
+  margin: 20px 0;
+}
+
+.impedance-group {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: var(--equation-bg);
+  border-radius: 8px;
+}
+
+.impedance-group h4 {
+  margin: 0 0 10px 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.impedance-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.impedance-item input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.impedance-item input[type="number"] {
+  width: 80px;
+  margin: 0;
+  padding: 5px;
+}
+
+.impedance-item label {
+  margin: 0;
+  flex: 1;
+  font-weight: normal;
+}
+
+/* Impedance Input Sections */
+.impedance-input-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--result-bg);
+  border-radius: 8px;
+  border-left: 4px solid var(--result-border);
+  transition: all 0.3s ease;
+}
+
+html.rtl .impedance-input-section {
+  border-left: none;
+  border-right: 4px solid var(--result-border);
+}
+
+.impedance-input-section.calculated {
+  opacity: 0.7;
+  background: var(--equation-bg);
+  border-left-color: var(--button-primary);
+}
+
+html.rtl .impedance-input-section.calculated {
+  border-right-color: var(--button-primary);
+}
+
+.impedance-input-section h4 {
+  margin: 0 0 15px 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.impedance-result {
+  margin-top: 15px;
+}
+
+/* Zk3ph Calculator Inline Styles */
+.zk3ph-calculator-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--equation-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.zk3ph-calculator-section h4 {
+  margin: 0 0 15px 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.impedance-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.impedance-header input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.impedance-header label {
+  margin: 0;
+  font-weight: 500;
+}
+
+.impedance-details {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.quantity-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.quantity-row label {
+  margin: 0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.quantity-row input {
+  width: 80px;
+  padding: 6px;
+  margin: 0;
+}
+
+/* Impedance Reflection Styles */
+.impedance-reflection-section {
+  margin: 15px 0;
+  padding: 10px;
+  background: var(--equation-bg);
+  border-radius: 6px;
+  border: 1px dashed var(--border);
+}
+
+.reflection-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.reflection-checkbox-container input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.reflection-checkbox-container label {
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.reflection-inputs-container {
+  padding-left: 20px;
+  border-left: 2px solid var(--border);
+  margin-top: 10px;
+}
+
+html.rtl .reflection-inputs-container {
+  padding-left: 0;
+  padding-right: 20px;
+  border-left: none;
+  border-right: 2px solid var(--border);
+}
+
+.reflection-inputs-container label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.reflection-inputs-container input {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* RTr = 0 Option Styles */
+.rtr-zero-section {
+  margin: 15px 0;
+  padding: 12px;
+  background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+  border-radius: 8px;
+  border: 2px solid #27ae60;
+  position: relative;
+}
+
+html.dark-mode .rtr-zero-section {
+  background: linear-gradient(135deg, #1a3328, #2d4a3a);
+  border-color: #2a9d5d;
+}
+
+.rtr-zero-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.rtr-zero-checkbox-container input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.rtr-zero-label {
+  margin: 0 !important;
+  font-weight: bold;
+  color: #27ae60;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+html.dark-mode .rtr-zero-label {
+  color: #2a9d5d;
+}
+
+.rtr-zero-explanation {
+  margin: 0;
+  font-size: 13px;
+  color: #2c5530;
+  font-style: italic;
+  padding-left: 30px;
+}
+
+html.dark-mode .rtr-zero-explanation {
+  color: #7fb88a;
+}
+
+html.rtl .rtr-zero-explanation {
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+/* RTr = 0 Mode Styling for Equations Container */
+.equations-container.rtr-zero-mode {
+  position: relative;
+}
+
+.equations-container.rtr-zero-mode::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(39, 174, 96, 0.1), rgba(39, 174, 96, 0.05));
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.equations-container.rtr-zero-mode .equation-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Special highlighting for ZTr and XTr equations in RTr = 0 mode */
+.equations-container.rtr-zero-mode .equation-section:has(#ztr-1-ztr-enabled),
+.equations-container.rtr-zero-mode .equation-section:has(#ztr-1-xtr-enabled) {
+  border-color: #27ae60;
+  box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
+}
+
+/* Enhanced Equation Selection Styles */
+.calculation-instructions {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  font-style: italic;
+  padding: 8px 12px;
+  background: var(--equation-bg);
+  border-radius: 6px;
+  border-left: 3px solid var(--button-secondary);
+}
+
+html.rtl .calculation-instructions {
+  border-left: none;
+  border-right: 3px solid var(--button-secondary);
+}
+
+.equations-container {
+  margin: 15px 0;
+}
+
+.common-inputs {
+  background: var(--equation-bg);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border: 2px solid var(--button-primary);
+}
+
+.common-inputs label {
+  font-weight: bold;
+  color: var(--button-primary);
+}
+
+.equation-section {
+  margin-bottom: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.equation-section:hover {
+  border-color: var(--button-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.equation-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: var(--table-row-even);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.equation-header:hover {
+  background: var(--table-row-hover);
+}
+
+.equation-header input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.equation-header label {
+  margin: 0;
+  font-weight: 500;
+  cursor: pointer;
+  flex: 1;
+}
+
+.equation-formula {
+  padding: 8px 15px;
+  background: var(--equation-bg);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-top: 1px dashed var(--border);
+  direction: ltr;
+  text-align: center;
+}
+
+.equation-inputs {
+  padding: 15px;
+  background: var(--container-bg);
+  border-top: 1px solid var(--border);
+  animation: slideDown 0.3s ease-out;
+}
+
+.equation-inputs label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.equation-inputs input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+/* Enhanced calculation confirmation */
+.calculation-confirmation .ltr-content {
+  font-family: "Courier New", monospace;
+  background: var(--equation-bg);
+  padding: 5px 8px;
+  border-radius: 4px;
+  margin: 3px 0;
+  border-left: 3px solid var(--button-primary);
+}
+
+html.rtl .calculation-confirmation .ltr-content {
+  border-left: none;
+  border-right: 3px solid var(--button-primary);
+}
+
+/* Special styling for ideal transformer results */
+.calculation-confirmation:has(.ideal-transformer) {
+  border-left-color: #27ae60;
+}
+
+html.rtl .calculation-confirmation:has(.ideal-transformer) {
+  border-right-color: #27ae60;
+}
+
+/* Responsive design for equation interface */
+@media (max-width: 600px) {
+  .equation-header {
+    padding: 10px;
+  }
+
+  .equation-inputs {
+    padding: 10px;
+  }
+
+  .equation-formula {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .common-inputs {
+    padding: 8px;
+  }
+
+  .rtr-zero-section {
+    padding: 10px;
+  }
+
+  .rtr-zero-explanation {
+    padding-left: 25px;
+    font-size: 12px;
+  }
+
+  html.rtl .rtr-zero-explanation {
+    padding-right: 25px;
+  }
+}
+
+/* Disabled equation styling */
+.equation-section.equation-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.equation-section.equation-disabled .equation-header {
+  background: var(--table-row-even);
+  cursor: not-allowed;
+}
+
+.equation-section.equation-disabled .equation-header:hover {
+  background: var(--table-row-even);
+}

@@ -2,14 +2,14 @@
 <html lang="he" class="dark-mode rtl">
 <head>
   <meta charset="UTF-8">
-  <title>חישוב עכבת כבלים</title>
+  <title>תכנון מעגל חשמלי</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <div class="header-row">
-      <h2 id="app-title">חישוב התנגדות והיגב כבלים</h2>
+      <h2 id="app-title">תכנון מעגל חשמלי</h2>
       <div class="controls-row">
         <div class="language-toggle">
           <button id="lang-toggle" class="lang-btn">EN</button>
@@ -25,56 +25,80 @@
       </div>
     </div>
 
-    <label id="material-label">חומר:</label>
-    <div class="radio-group">
-      <input type="radio" id="copper" name="material" value="copper" checked>
-      <label for="copper" id="copper-label">נחושת</label>
-      <input type="radio" id="aluminium" name="material" value="aluminium">
-      <label for="aluminium" id="aluminium-label">אלומיניום</label>
+    <!-- Calculator Selection Buttons -->
+    <div class="calculator-buttons blurable-content">
+      <button class="calc-btn" id="rx-finder-btn" onclick="toggleCalculatorSection('rx-finder-section')">מוצא r ו-x</button>
+      <button class="calc-btn" id="cable-impedance-btn" onclick="toggleCalculatorSection('impedance-section')">עכבת כבל</button>
+      <button class="calc-btn" id="voltage-drop-btn" onclick="toggleCalculatorSection('voltage-drop-section')">מפל מתח</button>
+      <button class="calc-btn" id="short-circuit-1ph-btn" onclick="toggleCalculatorSection('short-circuit-1ph-section')">קצר חד-פאזי</button>
+      <button class="calc-btn" id="short-circuit-3ph-btn" onclick="toggleCalculatorSection('short-circuit-3ph-section')">קצר תלת-פאזי</button>
+      <button class="calc-btn show-hide-all" id="show-hide-all-btn" onclick="toggleAllSections()">הצג/הסתר הכל</button>
     </div>
 
-    <label id="core-label">סוג כבל:</label>
-    <div class="radio-group">
-      <input type="radio" id="single" name="core" value="single" checked>
-      <label for="single" id="single-label">חד-גידי</label>
-      <input type="radio" id="multi" name="core" value="multi">
-      <label for="multi" id="multi-label">רב-גידי</label>
+    <!-- R&X Finder Section -->
+    <div class="rx-finder-section" id="rx-finder-section">
+      <h3 id="rx-finder-title">מוצא התנגדות והיגב ליחידת אורך של כבלים</h3>
+      
+      <label id="material-label">חומר:</label>
+      <div class="radio-group">
+        <input type="radio" id="copper" name="material" value="copper" checked>
+        <label for="copper" id="copper-label">נחושת</label>
+        <input type="radio" id="aluminium" name="material" value="aluminium">
+        <label for="aluminium" id="aluminium-label">אלומיניום</label>
+      </div>
+
+      <label id="core-label">סוג כבל:</label>
+      <div class="radio-group">
+        <input type="radio" id="single" name="core" value="single" checked>
+        <label for="single" id="single-label">חד-גידי</label>
+        <input type="radio" id="multi" name="core" value="multi">
+        <label for="multi" id="multi-label">רב-גידי</label>
+      </div>
+
+      <label id="area-label">שטח חתך (A) [ממ²]:</label>
+      <input type="text" id="surface" list="surface-options" placeholder="הזן או בחר שטח חתך">
+      <datalist id="surface-options">
+        <option value="1.5">1.5 mm²</option>
+        <option value="2.5">2.5 mm²</option>
+        <option value="4">4 mm²</option>
+        <option value="6">6 mm²</option>
+        <option value="10">10 mm²</option>
+        <option value="16">16 mm²</option>
+        <option value="25">25 mm²</option>
+        <option value="35">35 mm²</option>
+        <option value="50">50 mm²</option>
+        <option value="70">70 mm²</option>
+        <option value="95">95 mm²</option>
+        <option value="120">120 mm²</option>
+        <option value="150">150 mm²</option>
+        <option value="185">185 mm²</option>
+        <option value="240">240 mm²</option>
+        <option value="300">300 mm²</option>
+      </datalist>
+
+      <button onclick="findRX()" id="find-btn">קבל r ו-x</button>
+
+      <div class="result" id="output"></div>
     </div>
-
-    <label id="area-label">שטח חתך (A) [ממ²]:</label>
-    <input type="text" id="surface" list="surface-options" placeholder="הזן או בחר שטח חתך">
-    <datalist id="surface-options">
-      <option value="1.5">1.5 mm²</option>
-      <option value="2.5">2.5 mm²</option>
-      <option value="4">4 mm²</option>
-      <option value="6">6 mm²</option>
-      <option value="10">10 mm²</option>
-      <option value="16">16 mm²</option>
-      <option value="25">25 mm²</option>
-      <option value="35">35 mm²</option>
-      <option value="50">50 mm²</option>
-      <option value="70">70 mm²</option>
-      <option value="95">95 mm²</option>
-      <option value="120">120 mm²</option>
-      <option value="150">150 mm²</option>
-      <option value="185">185 mm²</option>
-      <option value="240">240 mm²</option>
-      <option value="300">300 mm²</option>
-    </datalist>
-
-    <button onclick="findRX()" id="find-btn">קבל r ו-x</button>
-
-    <div class="result" id="output"></div>
     
-    <div class="impedance-section">
+    <!-- Cable Impedance Calculator Section -->
+    <div class="impedance-section blurable-content" id="impedance-section">
       <h3 id="calc-title">חישוב עכבת כבל</h3>
       
       <div class="math-equation">
         <div class="equation-content">
           <span class="equation-variable">Z</span>
           <span class="equation-equals">=</span>
-          <span class="equation-variable">L</span>
-          <span class="equation-times">×</span>
+          <div class="equation-fraction">
+            <div class="fraction-numerator">
+              <span class="equation-variable">L</span>
+            </div>
+            <div class="fraction-line"></div>
+            <div class="fraction-denominator">
+              <span class="equation-variable">n</span>
+            </div>
+          </div>
+          <span class="equation-dot">·</span>
           <span class="equation-parenthesis">(</span>
           <span class="equation-variable">r</span>
           <span class="equation-plus">+</span>
@@ -88,6 +112,9 @@
           </div>
           <div class="legend-item">
             <span id="length-legend">L # אורך כבל [km]</span>
+          </div>
+          <div class="legend-item">
+            <span id="cables-legend">n # מספר כבלים במקביל</span>
           </div>
           <div class="legend-item">
             <span id="resistance-legend">r # התנגדות [Ω/km]</span>
@@ -121,12 +148,384 @@
         </div>
       </div>
       
+      <div class="input-row">
+        <div class="input-group">
+          <label for="num-cables" id="num-cables-label">מספר כבלים במקביל (n):</label>
+          <input type="number" id="num-cables" step="1" min="1" value="1" placeholder="הזן מספר כבלים">
+        </div>
+      </div>
+      
       <button onclick="calculateImpedance()" id="calc-btn">חשב עכבה</button>
       
       <div class="result" id="impedance-output"></div>
     </div>
+
+    <!-- Voltage Drop Calculator Section -->
+    <div class="impedance-section" id="voltage-drop-section" style="display: none;">
+      <h3 id="voltage-drop-title">חישוב מפל מתח</h3>
+      
+      <!-- First Equation -->
+      <div class="math-equation">
+        <div class="equation-content">
+          <span class="equation-variable">∆V</span>
+          <span class="equation-equals">=</span>
+          <span class="equation-variable">k</span>
+          <span class="equation-dot">·</span>
+          <span class="equation-variable">I</span><sub class="equation-subscript">b</sub>
+          <span class="equation-dot">·</span>
+          <div class="equation-fraction">
+            <div class="fraction-numerator">
+              <span class="equation-variable">L</span>
+            </div>
+            <div class="fraction-line"></div>
+            <div class="fraction-denominator">
+              <span class="equation-variable">n</span>
+            </div>
+          </div>
+          <span class="equation-dot">·</span>
+          <span class="equation-parenthesis">(</span>
+          <span class="equation-variable">r</span>
+          <span class="equation-dot">·</span>
+          <span class="equation-function">cos</span>
+          <span class="equation-parenthesis">(</span>
+          <span class="equation-variable">α</span>
+          <span class="equation-parenthesis">)</span>
+          <span class="equation-plus">+</span>
+          <span class="equation-variable">x</span>
+          <span class="equation-dot">·</span>
+          <span class="equation-function">sin</span>
+          <span class="equation-parenthesis">(</span>
+          <span class="equation-variable">α</span>
+          <span class="equation-parenthesis">)</span>
+          <span class="equation-parenthesis">)</span>
+        </div>
+        <div class="equation-legend">
+          <div class="legend-item">
+            <span id="vd-voltage-drop-legend">∆V # מפל מתח [V]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-k-factor-legend">k # מקדם (√3 תלת-פאזי, 2 חד-פאזי)</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-load-current-legend">Ib # זרם עומס [A]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-distance-legend">L # מרחק (כיוון אחד) [km]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-conductors-legend">n # מספר מוליכים</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-phase-angle-legend">α # זווית פאזה [°]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Equation for Total Voltage Drop -->
+      <div class="math-equation">
+        <div class="equation-content">
+          <span class="equation-variable">∆V</span><sub class="equation-subscript">T</sub>
+          <span class="equation-equals">=</span>
+          <div class="equation-summation">
+            <span class="equation-variable">∑</span>
+            <sub class="summation-index">i</sub>
+          </div>
+          <span class="equation-variable">∆V</span><sub class="equation-subscript">i</sub>
+        </div>
+        <div class="equation-legend">
+          <div class="legend-item">
+            <span id="vd-total-voltage-legend">∆VT # מפל מתח כולל [V]</span>
+          </div>
+          <div class="legend-item">
+            <span id="vd-partial-voltage-legend">∆Vi # חישוב מפל מתח חלקי</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Number of Calculations Input -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="num-calculations" id="num-calculations-label">מספר חישובים (i):</label>
+          <input type="number" id="num-calculations" step="1" min="1" value="1" placeholder="הזן מספר חישובים">
+        </div>
+      </div>
+      
+      <label id="phase-type-label">סוג מערכת:</label>
+      <div class="radio-group">
+        <input type="radio" id="single-phase" name="phase-type" value="single" checked>
+        <label for="single-phase" id="single-phase-label">חד-פאזי</label>
+        <input type="radio" id="three-phase" name="phase-type" value="three">
+        <label for="three-phase" id="three-phase-label">תלת-פאזי</label>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="load-current" id="load-current-label">זרם עומס (Ib) [A]:</label>
+          <input type="number" id="load-current" step="0.1" min="0" placeholder="הזן זרם עומס">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="distance" id="distance-label">מרחק (L) [km]:</label>
+          <input type="number" id="distance" step="0.01" min="0" placeholder="הזן מרחק">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="num-conductors" id="num-conductors-label">מספר מוליכים (n):</label>
+          <input type="number" id="num-conductors" step="1" min="1" value="1" placeholder="הזן מספר מוליכים">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="vd-r-value" id="vd-r-value-label">התנגדות (r) [Ω/km]:</label>
+          <input type="number" id="vd-r-value" step="0.001" placeholder="הזן ערך r">
+        </div>
+        <button class="copy-btn" onclick="copyVDRValue()" id="copy-vd-r-btn">העתק מלמעלה</button>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="vd-x-value" id="vd-x-value-label">היגב (x) [Ω/km]:</label>
+          <input type="number" id="vd-x-value" step="0.001" placeholder="הזן ערך x">
+        </div>
+        <button class="copy-btn" onclick="copyVDXValue()" id="copy-vd-x-btn">העתק מלמעלה</button>
+      </div>
+      
+      <!-- Power Factor and Phase Angle side by side -->
+      <div class="angle-input-row">
+        <div class="angle-input-group">
+          <label for="power-factor" id="power-factor-label">Power Factor (PF):</label>
+          <input type="number" id="power-factor" step="0.01" min="-1" max="1" placeholder="הזן PF (-1 עד 1)">
+        </div>
+        <div class="angle-or-separator">
+          <span id="angle-or-text">או</span>
+        </div>
+        <div class="angle-input-group">
+          <label for="phase-angle" id="phase-angle-label">זווית פאזה (α) [°]:</label>
+          <input type="number" id="phase-angle" step="0.1" placeholder="הזן זווית פאזה">
+        </div>
+      </div>
+      
+      <button onclick="calculateVoltageDrop()" id="calculate-vd-btn">חשב מפל מתח</button>
+      
+      <!-- Loop Mode Controls (hidden by default) -->
+      <div class="loop-controls" id="loop-controls" style="display: none;">
+        <div class="loop-progress">
+          <span id="loop-progress-text">מחשב ∆V1 מתוך 3</span>
+        </div>
+        <button class="cancel-btn" onclick="cancelLoopMode()" id="cancel-loop-btn">ביטול (ESC)</button>
+      </div>
+      
+      <div class="result" id="voltage-drop-output"></div>
+    </div>
+
+    <div class="impedance-section blurable-content" id="short-circuit-1ph-section" style="display: none;">
+      <h3>חישוב קצר חד-פאזי</h3>
+      <p>מחשבון קצר חד-פאזי יתווסף בקרוב...</p>
+    </div>
+
+<div class="impedance-section blurable-content" id="short-circuit-3ph-section" style="display: none;">
+  <h3 id="short-circuit-3ph-title">חישוב קצר תלת-פאזי</h3>
+  
+  <!-- Main Equation -->
+  <div class="math-equation">
+    <div class="equation-content">
+      <span class="equation-variable">I</span><sub class="equation-subscript">k3ph</sub>
+      <span class="equation-equals">=</span>
+      <div class="equation-fraction">
+        <div class="fraction-numerator">
+          <span class="equation-variable">U</span><sub class="equation-subscript">n</sub>
+        </div>
+        <div class="fraction-line"></div>
+        <div class="fraction-denominator">
+          <span class="equation-variable">√3</span>
+          <span class="equation-dot">×</span>
+          <span class="equation-variable">Z</span><sub class="equation-subscript">k3ph</sub>
+        </div>
+      </div>
+    </div>
+    <div class="equation-legend">
+      <div class="legend-item">
+        <span id="sc3ph-current-legend">I<sub>k3ph</sub> # זרם קצר תלת-פאזי [A]</span>
+      </div>
+      <div class="legend-item">
+        <span id="sc3ph-voltage-legend">Un # מתח נומינלי של רמה ספציפית במערכת החשמלית [V]</span>
+      </div>
+      <div class="legend-item">
+        <span id="sc3ph-impedance-legend">Z<sub>k3ph</sub> # עכבת קצר תלת-פאזי [Ω]</span>
+      </div>
+    </div>
   </div>
   
+  <!-- Input Fields -->
+  <div class="input-row">
+    <div class="input-group">
+      <label for="nominal-voltage" id="nominal-voltage-label">מתח נומינלי (Un) [V]:</label>
+      <input type="number" id="nominal-voltage" step="1" min="0" placeholder="הזן מתח נומינלי">
+    </div>
+  </div>
+  
+  <div class="input-row">
+    <div class="input-group">
+      <label for="zk3ph-value" id="zk3ph-value-label">עכבת קצר (Zk3ph) [Ω]:</label>
+      <input type="text" id="zk3ph-value" readonly placeholder="חשב Zk3ph">
+    </div>
+  </div>
+
+  <!-- Zk3ph Calculator Section -->
+  <div class="zk3ph-calculator-section">
+    <h4 id="zk3ph-selection-title">בחירת רכיבי עכבה:</h4>
+    
+    <!-- Impedance Selection -->
+    <div class="impedance-selection">
+      <!-- Transformer Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="ztr-checkbox" onchange="toggleImpedanceType('ZTR')">
+          <label for="ztr-checkbox" id="ztr-label">עכבת שנאי (<i>Z</i><sub>TR</sub>)</label>
+        </div>
+        <div class="impedance-details" id="ztr-details" style="display: none;">
+          <div class="quantity-row">
+            <label for="ztr-transformers" id="ztr-transformers-label">מספר שנאים כולל:</label>
+            <input type="number" id="ztr-transformers" min="1" value="1" onchange="updateImpedanceQuantity('ZTR', this.value)">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Cable Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="zl-checkbox" onchange="toggleImpedanceType('ZL')">
+          <label for="zl-checkbox" id="zl-label">עכבת כבל (<i>Z</i><sub>L</sub>)</label>
+        </div>
+        <div class="impedance-details" id="zl-details" style="display: none;">
+          <div class="quantity-row">
+            <label for="zl-cables" id="zl-cables-label">מספר כבלים שונים:</label>
+            <input type="number" id="zl-cables" min="1" value="1" onchange="updateImpedanceQuantity('ZL', this.value)">
+          </div>
+        </div>
+      </div>
+      
+      <!-- System Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="zsystem-checkbox" onchange="toggleImpedanceType('ZSystem')">
+          <label for="zsystem-checkbox" id="zsystem-label">עכבת מערכת (<i>Z</i><sub>System</sub>)</label>
+        </div>
+      </div>
+      
+      <!-- Generator Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="zg-checkbox" onchange="toggleImpedanceType('ZG')">
+          <label for="zg-checkbox" id="zg-label">עכבת גנרטור (<i>Z</i><sub>G</sub>)</label>
+        </div>
+        <div class="impedance-details" id="zg-details" style="display: none;">
+          <div class="quantity-row">
+            <label for="zg-generators" id="zg-generators-label">מספר גנרטורים כולל:</label>
+            <input type="number" id="zg-generators" min="1" value="1" onchange="updateImpedanceQuantity('ZG', this.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <button onclick="confirmImpedanceSelection()" id="confirm-impedance-btn">אשר בחירת עכבות</button>
+    
+    <!-- Impedance Input Forms (will be shown after confirmation) -->
+    <div id="impedance-inputs-container" style="display: none;"></div>
+    
+    <button onclick="calculateZk3ph()" id="calculate-zk3ph-btn" style="display: none;">חשב Zk3ph</button>
+    
+    <div class="result" id="zk3ph-calculation-result"></div>
+  </div>
+  
+  <button onclick="calculateShortCircuit3Ph()" id="calculate-sc3ph-btn">חשב זרם קצר</button>
+  
+  <div class="result" id="short-circuit-3ph-output"></div>
+</div>
+
+<!-- Zk3ph Calculator Modal -->
+<div class="modal-overlay" id="zk3ph-modal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="zk3ph-modal-title">חישוב עכבת קצר Zk3ph</h3>
+      <button class="modal-close" onclick="closeZk3phCalculator()">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+      <p id="zk3ph-instructions">בחר רכיבים לחישוב עכבת הקצר:</p>
+      
+      <!-- Component Selection -->
+      <div class="component-selection">
+        <div class="component-group">
+          <h4 id="transformers-title">שנאים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="transformer-checkbox" onchange="toggleComponent('transformer')">
+            <label for="transformer-checkbox" id="transformer-label">שנאי</label>
+            <input type="number" id="transformer-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="component-group">
+          <h4 id="cables-title">כבלים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="cable-checkbox" onchange="toggleComponent('cable')">
+            <label for="cable-checkbox" id="cable-label">כבל</label>
+            <input type="number" id="cable-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="component-group">
+          <h4 id="generators-title">גנרטורים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="generator-checkbox" onchange="toggleComponent('generator')">
+            <label for="generator-checkbox" id="generator-label">גנרטור</label>
+            <input type="number" id="generator-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="component-group">
+          <h4 id="motors-title">מנועים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="motor-checkbox" onchange="toggleComponent('motor')">
+            <label for="motor-checkbox" id="motor-label">מנוע</label>
+            <input type="number" id="motor-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Component Input Forms (will be shown dynamically) -->
+      <div id="component-inputs"></div>
+      
+      <div class="modal-buttons">
+        <button onclick="calculateZk3ph()" id="calculate-zk3ph-modal-btn">חשב Zk3ph</button>
+        <button onclick="closeZk3phCalculator()" id="cancel-zk3ph-btn">ביטול</button>
+      </div>
+      
+      <div class="result" id="zk3ph-calculation-result"></div>
+    </div>
+  </div>
+</div>
+  </div>
+  
+  <script src="scripts/localized/lang.js"></script>
+  <script src="scripts/localized/translate.js"></script>
+  <script src="scripts/styles/theme.js"></script>
+  <script src="scripts/fetch_rx.js"></script>
+  <script src="scripts/impedance.js"></script>
+  <script src="scripts/voltage_drop.js"></script>
+  <script src="scripts/calculators.js"></script>
+  <script src="scripts/impedances/impedance_reflection.js"></script>
+  <script src="scripts/impedances/transformer_impedance.js"></script>
+  <script src="scripts/impedances/system_impedance.js"></script>
+  <script src="scripts/impedances/generator_impedance.js"></script>
+  <script src="scripts/impedances/cable_impedance_zk3ph.js"></script>
+  <script src="scripts/zk3ph.js"></script>
+  <script src="scripts/three_phase_fault.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+/* Animations and Transitions */
+
+@keyframes highlight {
+  0% {
+    background-color: var(--input-bg);
+  }
+  50% {
+    background-color: var(--result-border);
+  }
+  100% {
+    background-color: var(--input-bg);
+  }
+}
