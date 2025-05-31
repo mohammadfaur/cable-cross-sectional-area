@@ -142,6 +142,38 @@ function updateImpedanceTable(values) {
   impedanceOutput.innerHTML = tableHTML
 }
 
+// Add these functions to expose the calculation logic for reuse
+
+// Extract the core calculation logic into a reusable function
+function calculateCableImpedanceCore(r, x, length, numCables) {
+  // Calculate impedance using the formula Z = (L / n) * (r + jx)
+  const realPart = (length / numCables) * r
+  const imagPart = (length / numCables) * x
+
+  // Calculate magnitude and angle
+  const magnitude = Math.sqrt(realPart * realPart + imagPart * imagPart)
+  const angleRad = Math.atan2(imagPart, realPart)
+  const angleDeg = angleRad * (180 / Math.PI)
+
+  // Convert to milliohms
+  const realPartMilliohm = realPart * 1000
+  const imagPartMilliohm = imagPart * 1000
+  const magnitudeMilliohm = magnitude * 1000
+
+  return {
+    realPart,
+    imagPart,
+    magnitude,
+    angleDeg,
+    realPartMilliohm,
+    imagPartMilliohm,
+    magnitudeMilliohm,
+  }
+}
+
+// Expose the core calculation function to global scope
+window.CableApp.calculateCableImpedanceCore = calculateCableImpedanceCore
+
 // Expose functions to global scope
 window.CableApp.calculateImpedance = calculateImpedance
 window.CableApp.updateImpedanceTable = updateImpedanceTable
@@ -149,3 +181,5 @@ window.CableApp.lastCalculatedValues = () => lastCalculatedValues
 
 // Make functions available globally for HTML onclick handlers
 window.calculateImpedance = calculateImpedance
+
+console.log("Impedance module loaded")

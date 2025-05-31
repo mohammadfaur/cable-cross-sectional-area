@@ -328,10 +328,188 @@
       <p>מחשבון קצר חד-פאזי יתווסף בקרוב...</p>
     </div>
 
-    <div class="impedance-section blurable-content" id="short-circuit-3ph-section" style="display: none;">
-      <h3>חישוב קצר תלת-פאזי</h3>
-      <p>מחשבון קצר תלת-פאזי יתווסף בקרוב...</p>
+<div class="impedance-section blurable-content" id="short-circuit-3ph-section" style="display: none;">
+  <h3 id="short-circuit-3ph-title">חישוב קצר תלת-פאזי</h3>
+  
+  <!-- Main Equation -->
+  <div class="math-equation">
+    <div class="equation-content">
+      <span class="equation-variable">I</span><sub class="equation-subscript">k3ph</sub>
+      <span class="equation-equals">=</span>
+      <div class="equation-fraction">
+        <div class="fraction-numerator">
+          <span class="equation-variable">U</span><sub class="equation-subscript">n</sub>
+        </div>
+        <div class="fraction-line"></div>
+        <div class="fraction-denominator">
+          <span class="equation-variable">√3</span>
+          <span class="equation-dot">×</span>
+          <span class="equation-variable">Z</span><sub class="equation-subscript">k3ph</sub>
+        </div>
+      </div>
     </div>
+    <div class="equation-legend">
+      <div class="legend-item">
+        <span id="sc3ph-current-legend">I<sub>k3ph</sub> # זרם קצר תלת-פאזי [A]</span>
+      </div>
+      <div class="legend-item">
+        <span id="sc3ph-voltage-legend">Un # מתח נומינלי של רמה ספציפית במערכת החשמלית [V]</span>
+      </div>
+      <div class="legend-item">
+        <span id="sc3ph-impedance-legend">Z<sub>k3ph</sub> # עכבת קצר תלת-פאזי [Ω]</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Input Fields -->
+  <div class="input-row">
+    <div class="input-group">
+      <label for="nominal-voltage" id="nominal-voltage-label">מתח נומינלי (Un) [V]:</label>
+      <input type="number" id="nominal-voltage" step="1" min="0" placeholder="הזן מתח נומינלי">
+    </div>
+  </div>
+  
+  <div class="input-row">
+    <div class="input-group">
+      <label for="zk3ph-value" id="zk3ph-value-label">עכבת קצר (Zk3ph) [Ω]:</label>
+      <input type="text" id="zk3ph-value" readonly placeholder="חשב Zk3ph">
+    </div>
+  </div>
+
+  <!-- Zk3ph Calculator Section -->
+  <div class="zk3ph-calculator-section">
+    <h4 id="zk3ph-selection-title">בחירת רכיבי עכבה:</h4>
+    
+    <!-- Impedance Selection -->
+    <div class="impedance-selection">
+      <!-- Transformer Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="ztr-checkbox" onchange="toggleImpedanceType('ZTR')">
+          <label for="ztr-checkbox" id="ztr-label">עכבת שנאי (<i>Z</i><sub>TR</sub>)</label>
+        </div>
+        <div class="impedance-details" id="ztr-details" style="display: none;">
+          <div class="quantity-row">
+            <label for="ztr-transformers" id="ztr-transformers-label">מספר שנאים כולל:</label>
+            <input type="number" id="ztr-transformers" min="1" value="1" onchange="updateImpedanceQuantity('ZTR', this.value)">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Cable Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="zl-checkbox" onchange="toggleImpedanceType('ZL')">
+          <label for="zl-checkbox" id="zl-label">עכבת כבל (<i>Z</i><sub>L</sub>)</label>
+        </div>
+        <div class="impedance-details" id="zl-details" style="display: none;">
+          <div class="quantity-row">
+            <label for="zl-cables" id="zl-cables-label">מספר כבלים שונים:</label>
+            <input type="number" id="zl-cables" min="1" value="1" onchange="updateImpedanceQuantity('ZL', this.value)">
+          </div>
+        </div>
+      </div>
+      
+      <!-- System Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="zsystem-checkbox" onchange="toggleImpedanceType('ZSystem')">
+          <label for="zsystem-checkbox" id="zsystem-label">עכבת מערכת (<i>Z</i><sub>System</sub>)</label>
+        </div>
+      </div>
+      
+      <!-- Generator Impedance -->
+      <div class="impedance-group">
+        <div class="impedance-header">
+          <input type="checkbox" id="zg-checkbox" onchange="toggleImpedanceType('ZG')">
+          <label for="zg-checkbox" id="zg-label">עכבת גנרטור (<i>Z</i><sub>G</sub>)</label>
+        </div>
+        <div class="impedance-details" id="zg-details" style="display: none;">
+          <div class="quantity-row">
+            <label for="zg-generators" id="zg-generators-label">מספר גנרטורים כולל:</label>
+            <input type="number" id="zg-generators" min="1" value="1" onchange="updateImpedanceQuantity('ZG', this.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <button onclick="confirmImpedanceSelection()" id="confirm-impedance-btn">אשר בחירת עכבות</button>
+    
+    <!-- Impedance Input Forms (will be shown after confirmation) -->
+    <div id="impedance-inputs-container" style="display: none;"></div>
+    
+    <button onclick="calculateZk3ph()" id="calculate-zk3ph-btn" style="display: none;">חשב Zk3ph</button>
+    
+    <div class="result" id="zk3ph-calculation-result"></div>
+  </div>
+  
+  <button onclick="calculateShortCircuit3Ph()" id="calculate-sc3ph-btn">חשב זרם קצר</button>
+  
+  <div class="result" id="short-circuit-3ph-output"></div>
+</div>
+
+<!-- Zk3ph Calculator Modal -->
+<div class="modal-overlay" id="zk3ph-modal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="zk3ph-modal-title">חישוב עכבת קצר Zk3ph</h3>
+      <button class="modal-close" onclick="closeZk3phCalculator()">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+      <p id="zk3ph-instructions">בחר רכיבים לחישוב עכבת הקצר:</p>
+      
+      <!-- Component Selection -->
+      <div class="component-selection">
+        <div class="component-group">
+          <h4 id="transformers-title">שנאים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="transformer-checkbox" onchange="toggleComponent('transformer')">
+            <label for="transformer-checkbox" id="transformer-label">שנאי</label>
+            <input type="number" id="transformer-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="component-group">
+          <h4 id="cables-title">כבלים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="cable-checkbox" onchange="toggleComponent('cable')">
+            <label for="cable-checkbox" id="cable-label">כבל</label>
+            <input type="number" id="cable-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="component-group">
+          <h4 id="generators-title">גנרטורים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="generator-checkbox" onchange="toggleComponent('generator')">
+            <label for="generator-checkbox" id="generator-label">גנרטור</label>
+            <input type="number" id="generator-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="component-group">
+          <h4 id="motors-title">מנועים</h4>
+          <div class="component-item">
+            <input type="checkbox" id="motor-checkbox" onchange="toggleComponent('motor')">
+            <label for="motor-checkbox" id="motor-label">מנוע</label>
+            <input type="number" id="motor-quantity" min="1" value="1" placeholder="כמות" style="display: none;">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Component Input Forms (will be shown dynamically) -->
+      <div id="component-inputs"></div>
+      
+      <div class="modal-buttons">
+        <button onclick="calculateZk3ph()" id="calculate-zk3ph-modal-btn">חשב Zk3ph</button>
+        <button onclick="closeZk3phCalculator()" id="cancel-zk3ph-btn">ביטול</button>
+      </div>
+      
+      <div class="result" id="zk3ph-calculation-result"></div>
+    </div>
+  </div>
+</div>
   </div>
   
   <script src="scripts/localized/lang.js"></script>
@@ -341,6 +519,13 @@
   <script src="scripts/impedance.js"></script>
   <script src="scripts/voltage_drop.js"></script>
   <script src="scripts/calculators.js"></script>
+  <script src="scripts/impedances/impedance_reflection.js"></script>
+  <script src="scripts/impedances/transformer_impedance.js"></script>
+  <script src="scripts/impedances/system_impedance.js"></script>
+  <script src="scripts/impedances/generator_impedance.js"></script>
+  <script src="scripts/impedances/cable_impedance_zk3ph.js"></script>
+  <script src="scripts/zk3ph.js"></script>
+  <script src="scripts/three_phase_fault.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

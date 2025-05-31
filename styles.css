@@ -3,9 +3,16 @@
 @import url("styles/base.css");
 @import url("styles/layout.css");
 @import url("styles/components.css");
-@import url("styles/calculators.css");
 @import url("styles/tables.css");
 @import url("styles/animations.css");
-@import url("styles/responsive.css");
 
-/* Remove all the duplicated CSS content below this line */
+/* Calculator-specific imports */
+@import url("styles/calculators/buttons.css");
+@import url("styles/calculators/equations.css");
+@import url("styles/calculators/modals.css");
+@import url("styles/calculators/interactive.css");
+@import url("styles/calculators/impedances.css");
+@import url("styles/calculators/results.css");
+@import url("styles/calculators/responsive.css");
+
+@import url("styles/responsive.css");

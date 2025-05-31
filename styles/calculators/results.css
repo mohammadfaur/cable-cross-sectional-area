@@ -1,0 +1,193 @@
+/* Results Display and Confirmation Styles */
+
+/* Component Selection Styles */
+.component-selection {
+  margin: 20px 0;
+}
+
+.component-group {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: var(--equation-bg);
+  border-radius: 8px;
+}
+
+.component-group h4 {
+  margin: 0 0 10px 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.component-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.component-item input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.component-item input[type="number"] {
+  width: 80px;
+  margin: 0;
+  padding: 5px;
+}
+
+.component-item label {
+  margin: 0;
+  flex: 1;
+  font-weight: normal;
+}
+
+/* Component Input Sections */
+.component-input-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--result-bg);
+  border-radius: 8px;
+  border-left: 4px solid var(--result-border);
+}
+
+html.rtl .component-input-section {
+  border-left: none;
+  border-right: 4px solid var(--result-border);
+}
+
+.component-input-section h4 {
+  margin: 0 0 15px 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+/* Short Circuit Table Styles */
+.short-circuit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.short-circuit-table th,
+.short-circuit-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.short-circuit-table th {
+  background-color: var(--table-header);
+  color: white;
+  font-weight: 500;
+}
+
+.short-circuit-table tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+.short-circuit-table tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+.short-circuit-table td:first-child {
+  background-color: var(--table-first-col);
+  font-weight: 500;
+  text-align: left;
+}
+
+html.rtl .short-circuit-table td:first-child {
+  text-align: right;
+}
+
+.short-circuit-table .result-row {
+  background-color: var(--button-primary) !important;
+  color: white;
+  font-weight: bold;
+}
+
+.short-circuit-table .result-row:hover {
+  background-color: var(--button-primary-hover) !important;
+}
+
+.short-circuit-table .result-row td {
+  background-color: transparent;
+  color: white;
+}
+
+/* Zk3ph Result Table */
+.zk3ph-result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.zk3ph-result-table th,
+.zk3ph-result-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.zk3ph-result-table th {
+  background-color: var(--button-secondary);
+  color: white;
+  font-weight: 500;
+}
+
+.zk3ph-result-table tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+.zk3ph-result-table td:first-child {
+  background-color: var(--table-first-col);
+  font-weight: 500;
+  text-align: left;
+}
+
+html.rtl .zk3ph-result-table td:first-child {
+  text-align: right;
+}
+
+.zk3ph-result-table .result-row {
+  background-color: var(--button-primary) !important;
+  color: white;
+  font-weight: bold;
+}
+
+.zk3ph-result-table .result-row td {
+  background-color: transparent;
+  color: white;
+}
+
+/* Calculation Confirmation Styles */
+.calculation-confirmation {
+  background: var(--result-bg);
+  border-left: 4px solid var(--button-primary);
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+html.rtl .calculation-confirmation {
+  border-left: none;
+  border-right: 4px solid var(--button-primary);
+}
+
+.calculation-confirmation p {
+  margin: 5px 0;
+}
+
+.calculation-confirmation p:first-child {
+  color: var(--button-primary);
+  font-weight: bold;
+}

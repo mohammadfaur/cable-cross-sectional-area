@@ -1,0 +1,78 @@
+/* Responsive Design for Calculator Components */
+
+@media (max-width: 600px) {
+  /* Calculator buttons responsive */
+  .calculator-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .calc-btn {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  /* Impedance items responsive */
+  .impedance-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .impedance-item input[type="number"] {
+    width: 100%;
+  }
+
+  .component-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .component-item input[type="number"] {
+    width: 100%;
+  }
+
+  /* Integration buttons responsive */
+  .integration-buttons {
+    flex-direction: column;
+  }
+
+  .integration-btn {
+    width: 100%;
+  }
+
+  /* Equation content responsive */
+  .impedance-equation .equation-content {
+    font-size: 14px;
+  }
+
+  .equation-content {
+    font-size: 18px;
+  }
+
+  .equation-legend {
+    grid-template-columns: 1fr;
+  }
+
+  /* Quantity row responsive */
+  .quantity-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .quantity-row input {
+    width: 100%;
+  }
+
+  /* Reflection inputs responsive */
+  .reflection-inputs-container {
+    padding-left: 10px;
+    border-left-width: 1px;
+  }
+
+  html.rtl .reflection-inputs-container {
+    padding-right: 10px;
+    border-right-width: 1px;
+  }
+}
