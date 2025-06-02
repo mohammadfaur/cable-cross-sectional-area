@@ -421,14 +421,14 @@ function showGroupingInterface() {
   groupingSection.className = "impedance-grouping"
 
   const groupingTitle = document.createElement("h4")
-  groupingTitle.textContent = currentLang === "he" ? "קיבוץ עכבות במקביל:" : "Parallel Impedance Grouping:"
+  groupingTitle.textContent = currentLang === "he" ? "חישוב עכבות במקביל:" : "Calculate Parallel Impedances:"
   groupingSection.appendChild(groupingTitle)
 
   const groupingInstructions = document.createElement("p")
   groupingInstructions.textContent =
     currentLang === "he"
-      ? "בחר עכבות מאותו סוג לקיבוץ במקביל. עכבות שלא נבחרו יישארו נפרדות."
-      : "Select impedances of the same type to group in parallel. Unselected impedances will remain separate."
+      ? "בחר עכבות מאותו סוג לחשב במקביל. עכבות שלא נבחרו יישארו בטור."
+      : "Select impedances of the same type to calculate in parallel. Unselected impedances will remain in series."
   groupingSection.appendChild(groupingInstructions)
 
   groupableTypes.forEach((impedanceType) => {
@@ -440,12 +440,12 @@ function showGroupingInterface() {
   buttonContainer.className = "grouping-buttons"
 
   const applyGroupingBtn = document.createElement("button")
-  applyGroupingBtn.textContent = currentLang === "he" ? "החל קיבוץ" : "Apply Grouping"
+  applyGroupingBtn.textContent = currentLang === "he" ? "חשב" : "Apply"
   applyGroupingBtn.onclick = applyImpedanceGrouping
   buttonContainer.appendChild(applyGroupingBtn)
 
   const skipGroupingBtn = document.createElement("button")
-  skipGroupingBtn.textContent = currentLang === "he" ? "דלג על קיבוץ" : "Skip Grouping"
+  skipGroupingBtn.textContent = currentLang === "he" ? "דלג" : "Skip"
   skipGroupingBtn.onclick = skipImpedanceGrouping
   buttonContainer.appendChild(skipGroupingBtn)
 
