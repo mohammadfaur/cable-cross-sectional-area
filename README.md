@@ -79,7 +79,7 @@ No server required — just open `index.html` in your browser.
 
 To compute the 3-phase short-circuit current at a specific point in the system:
 
-1. **Enter all contributing impedances** that make up the total system impedance \( Z\_{total} \), including cables, transformers, generators, and other components.
+1. **Enter all contributing impedances** that make up the total system impedance $` Z_{total} `$, including cables, transformers, generators, and other components.
 2. **Provide individual parameters** required to calculate each impedance (e.g., length, cross-section, etc..).
 3. **Combine the impedances**, including support for handling parallel configurations where needed.
 4. **Apply impedance reflection** if required — the system allows reflecting any impedance across transformer windings or other boundaries.
