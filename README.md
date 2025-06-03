@@ -1,6 +1,6 @@
 # ⚡ Cable Cross-Sectional Area & Impedance Calculators
 
-A modular, responsive, and bilingual web app for electrical engineers and technicians. This tool helps estimate cable resistance (r), reactance (x), voltage drop, impedance under various scenarios (transformer, generator, system), and short-circuit current calculations — all in a clean interface supporting Hebrew 🇮🇱 and English EN.
+A modular, responsive, and bilingual web app for electrical engineers and technicians. This tool helps estimate cable resistance (r), reactance (x), voltage drop, impedance under various scenarios (transformer, generator, system), and short-circuit current calculations — all in a clean interface that supports both Hebrew 🇮🇱 and English EN.
 
 ---
 
@@ -83,10 +83,12 @@ To compute the 3-phase short-circuit current at a specific point in the system:
 2. **Provide individual parameters** required to calculate each impedance (e.g., length, cross-section, etc..).
 3. **Combine the impedances**, including support for handling parallel configurations where needed.
 4. **Apply impedance reflection** if required — the system allows reflecting any impedance across transformer windings or other boundaries.
-5. Finally, the total impedance is used in the formula:  
-   \[
-   I*{k3\phi} = \frac{U_n}{\sqrt{3} \cdot Z*{total}}
-   \]  
+5. Finally, the total impedance is used in the formula:
+ 
+   $`
+   I_{k3\phi} = \frac{U_n}{\sqrt{3} \cdot Z_{total}}
+   `$
+   
    to compute the initial symmetrical short-circuit current.
 
 ---
@@ -94,14 +96,12 @@ To compute the 3-phase short-circuit current at a specific point in the system:
 ## 🧪 Development Notes
 
 - Built entirely with **vanilla JavaScript**
-- Easy to extend — every feature lives in its own script file
+- Easy to extend — every feature lives in its script file
 - All language-dependent labels update via `translate.js`
 
 ---
 
 ## 👨‍💻 Author
 
-Developed by **Mohammad Faur + AI**  
-🔗 [GitHub](https://github.com/mohammadfaur)
-
+Developed by **Me + AI**  
 ---
